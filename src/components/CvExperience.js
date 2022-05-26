@@ -23,6 +23,8 @@ class CvExperience extends Component {
             </p>
           )}
         </div>
+        <p className="cv-sub-heading">{info.companyName}</p>
+        <p>{info.roleDescription}</p>
       </div>
     );
   }

@@ -10,7 +10,7 @@ class ExperienceInfoEditor extends Component {
 
     return (
       <fieldset>
-        <legend>Personal Information</legend>
+        <legend>Experience Information</legend>
         <div className="two-col">
           <label htmlFor="companyName">Company Name:</label>
           <input id="companyName" name="companyName" value={formValues.companyName} onChange={handleChange}></input>
@@ -18,17 +18,14 @@ class ExperienceInfoEditor extends Component {
           <label htmlFor="positionTitle">Position Title:</label>
           <input id="positionTitle" name="positionTitle" value={formValues.positionTitle} onChange={handleChange}></input>
 
-          <label htmlFor="positionStartDate">Start Date</label>
+          <label htmlFor="positionStartDate">Start Date:</label>
           <input id="positionStartDate" name="positionStartDate" type="date" value={formValues.positionStartDate} onChange={handleChange}></input>
 
-          <label htmlFor="positionStartDate">End Date</label>
+          <label htmlFor="positionStartDate">End Date:</label>
           <input id="positionEndDate" name="positionEndDate" type="date" value={formValues.positionEndDate} onChange={handleChange}></input>
 
-          <label htmlFor="mainTasks">Main Tasks</label>
-          <textarea id="mainTasks" name="mainTasks" value={formValues.mainTasks} onChange={handleChange}></textarea>
-
-          <label htmlFor="challenge">A challenge You Faced:</label>
-          <textarea id="challenge" name="challenge" value={formValues.challenge} onChange={handleChange}></textarea>
+          <label htmlFor="mainTasks">Description of Role:</label>
+          <textarea id="roleDescription" name="roleDescription" value={formValues.roleDescription} onChange={handleChange}></textarea>
         </div>
       </fieldset>
     );

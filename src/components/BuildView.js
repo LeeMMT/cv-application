@@ -3,12 +3,16 @@ import PersonalInfoEditor from "./PersonalInfoEditor";
 import EducationInfoEditor from "./EducationInfoEditor";
 import ExperienceInfoEditor from "./ExperienceInfoEditor";
 import "../styles/build-view.css";
+import FormControls from "./FormControls";
 
 class BuildView extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      personal: true,
+      education: true,
+      experience: true,
       fName: "",
       lName: "",
       city: "",
@@ -24,13 +28,13 @@ class BuildView extends Component {
       positionTitle: "",
       positionStartDate: "",
       positionEndDate: "",
-      mainTasks: "",
-      challenge: "What is an example of a challenge you face during your time at this particular company, and how did you overcome said challenge?",
+      roleDescription: "",
     };
 
     this.savePhotoFile = this.savePhotoFile.bind(this);
     this.saveInfo = this.saveInfo.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.toggleArea = this.toggleArea.bind(this);
   }
 
   savePhotoFile(file) {
@@ -47,18 +51,20 @@ class BuildView extends Component {
     });
   }
 
+  toggleArea(e) {
+    const area = e.target.getAttribute("data-area");
+    this.setState({
+      [area]: this.state[area] ? false : true,
+    });
+  }
+
   render() {
     return (
       <form>
-        <PersonalInfoEditor formValues={this.state} handleChange={this.handleChange} savePhotoFile={this.savePhotoFile} />
-        <EducationInfoEditor formValues={this.state} handleChange={this.handleChange} />
-        <ExperienceInfoEditor formValues={this.state} handleChange={this.handleChange} />
-        <button id="save-details-btn" type="button" onClick={this.saveInfo}>
-          Save Details
-        </button>
-        <button type="button" onClick={this.props.printInfo}>
-          Print State
-        </button>
+        <FormControls info={this.state} toggleArea={this.toggleArea} saveInfo={this.saveInfo} />
+        {this.state.personal && <PersonalInfoEditor formValues={this.state} handleChange={this.handleChange} savePhotoFile={this.savePhotoFile} />}
+        {this.state.education && <EducationInfoEditor formValues={this.state} handleChange={this.handleChange} />}
+        {this.state.experience && <ExperienceInfoEditor formValues={this.state} handleChange={this.handleChange} />}
       </form>
     );
   }

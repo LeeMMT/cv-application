@@ -23,27 +23,21 @@ class Main extends Component {
       positionTitle: "",
       positionStartDate: "",
       positionEndDate: "",
-      mainTasks: "",
-      challenge: "",
+      roleDescription: "",
     };
 
     this.saveInfo = this.saveInfo.bind(this);
-    this.printInfo = this.printInfo.bind(this);
   }
 
   saveInfo(info) {
     this.setState(info);
   }
 
-  printInfo() {
-    console.log(this.state);
-  }
-
   render() {
     return (
       <div>
-        {this.props.activeMode === "build" && <BuildView saveInfo={this.saveInfo} printInfo={this.printInfo} photoRef={this.photoFile} />}
         {this.props.activeMode === "view" && <ViewMode info={this.state} />}
+        {this.props.activeMode === "build" && <BuildView saveInfo={this.saveInfo} printInfo={this.printInfo} photoRef={this.photoFile} />}
       </div>
     );
   }

@@ -3,28 +3,29 @@
 .cv-heading {
   margin-bottom: 24px !important;
   color: var(--cv-black) !important;
-  font-family: "Open Sans Med", Arial, Helvetica, sans-serif;
+  font-family: "Raleway Semi Bold", Arial, Helvetica, sans-serif;
+  line-height: 1em;
   font-size: 18px;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
 }
 
 /*Header*/
 
 .view-mode-container {
-  max-width: 800px;
+  max-width: 900px;
   width: 100%;
   border-radius: 6px;
   background-color: #fff;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: "1fr 1fr 1fr";
-  grid-template-rows: 160px 200px 200px;
+  grid-template-rows: 200px auto auto;
   grid-template-areas:
     "header header header"
     "personal profile profile"
     "education experience experience";
   box-shadow: rgba(17, 12, 46, 0.1) 0px 48px 100px 0px;
   margin: 0 auto;
+  font-family: "Raleway Reg", Arial, Helvetica, sans-serif;
 }
 
 .view-mode-container p {
@@ -41,7 +42,7 @@
   position: relative;
   grid-area: header;
 
-  padding: 16px;
+  padding: 32px;
   display: flex;
   justify-content: space-between;
 }
@@ -52,7 +53,7 @@
   width: 100%;
   display: flex;
   align-items: center;
-  font-size: 32px;
+  font-size: 40px;
 }
 
 .header-title p {
@@ -62,15 +63,15 @@
 
 .header-title span {
   display: inline;
-  font-family: "Open Sans Bold", Arial, Helvetica, sans-serif;
+  font-family: "Raleway Bold", Arial, Helvetica, sans-serif;
 }
 
 .prof-title {
   position: absolute;
-  bottom: 16px;
+  bottom: 0;
   left: 0;
   color: var(--cv-black) !important;
-  font-family: "Open Sans Reg", Arial, Helvetica, sans-serif !important;
+  font-family: "Raleway Reg", Arial, Helvetica, sans-serif !important;
   font-size: 16px !important;
   letter-spacing: 1px;
 }
@@ -111,9 +112,10 @@
 
 .personal-section {
   grid-area: personal;
-  padding: 96px 16px 16px;
+  padding: 32px;
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
 }
 
 .info-row {
@@ -121,6 +123,10 @@
   align-items: center;
   gap: 16px;
   margin-bottom: 12px;
+}
+
+.info-row:last-child {
+  margin-bottom: 0;
 }
 
 .personal-section .icon {
@@ -144,31 +150,54 @@
 
 .profile-section {
   grid-area: profile;
-  padding: 96px 16px 16px;
+  margin-top: -56px;
+  padding: 96px 32px 32px;
 }
 
 /*Education Section*/
 
 .education-section {
   grid-area: education;
-  padding: 48px 16px 16px;
+  padding: 48px 32px 32px;
 }
 
 .education-section p {
   margin-bottom: 4px;
 }
 
-.education-section p:nth-child(2) {
+.cv-sub-heading {
   color: var(--cv-black);
   font-family: "Open Sans Med", Arial, Helvetica, sans-serif;
 }
 
 .experience-section {
   grid-area: experience;
-  padding: 48px 16px 16px;
+  padding: 48px 32px 32px;
 }
 
 .job-info {
   display: flex;
   justify-content: space-between;
+}
+
+/*Fonts*/
+
+@font-face {
+  font-family: "Raleway Reg";
+  src: url("../fonts/Raleway/Raleway-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Raleway Med";
+  src: url("../fonts/Raleway/Raleway-Medium.ttf");
+}
+
+@font-face {
+  font-family: "Raleway Semi Bold";
+  src: url("../fonts/Raleway/Raleway-SemiBold.ttf");
+}
+
+@font-face {
+  font-family: "Raleway Bold";
+  src: url("../fonts/Raleway/Raleway-Bold.ttf");
 }
