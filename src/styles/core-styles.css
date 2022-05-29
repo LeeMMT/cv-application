@@ -1,5 +1,7 @@
 :root {
-  --primary: hsl(254, 47%, 51%);
+  --primary: #6347bd;
+  --secondary: #629bab;
+  --third: #e8d5b5;
   --beige: hsl(16, 15%, 80%);
   --text: hsl(0, 0%, 25%);
   --cv-black: hsl(15, 5%, 15%);
@@ -18,7 +20,7 @@ html,
 body {
   height: 100%;
   background-color: hsl(0, 0%, 92%);
-  font-family: "Open Sans Reg", Arial, Helvetica, sans-serif;
+  font-family: 'Open Sans Reg', Arial, Helvetica, sans-serif;
   font-size: 16px;
 }
 
@@ -40,21 +42,26 @@ h2 {
 }
 
 @font-face {
-  font-family: "Open Sans Reg";
-  src: url("../fonts/OpenSans/OpenSans-Regular.ttf");
+  font-family: 'Open Sans Reg';
+  src: url('../fonts/OpenSans/OpenSans-Regular.ttf');
 }
 
 @font-face {
-  font-family: "Open Sans Med";
-  src: url("../fonts/OpenSans/OpenSans-Medium.ttf");
+  font-family: 'Open Sans Italic';
+  src: url('../fonts/OpenSans/OpenSans-Italic.ttf');
 }
 
 @font-face {
-  font-family: "Open Sans Semi Bold";
-  src: url("../fonts/OpenSans/OpenSans-SemiBold.ttf");
+  font-family: 'Open Sans Med';
+  src: url('../fonts/OpenSans/OpenSans-Medium.ttf');
 }
 
 @font-face {
-  font-family: "Open Sans Bold";
-  src: url("../fonts/OpenSans/OpenSans-Bold.ttf");
+  font-family: 'Open Sans Semi Bold';
+  src: url('../fonts/OpenSans/OpenSans-SemiBold.ttf');
+}
+
+@font-face {
+  font-family: 'Open Sans Bold';
+  src: url('../fonts/OpenSans/OpenSans-Bold.ttf');
 }

@@ -46,8 +46,16 @@ class PersonalInfoEditor extends Component {
           <label htmlFor="city">City:</label>
           <input id="city" name="city" value={formValues.city} onChange={handleChange}></input>
 
-          <label htmlFor="photo">Photo:</label>
-          <input id="photo" name="photo" type="file" accept="image/*" onChange={this.handleFileChange}></input>
+          <label htmlFor="country">Country:</label>
+          <input id="country" name="country" value={formValues.country} onChange={handleChange}></input>
+
+          <p className="pseudo-label">Photo:</p>
+          <div className="file-input-wrapper">
+            <label className="label-btn" htmlFor="photo">
+              Upload file
+              <input id="photo" name="photo" type="file" accept="image/*" onChange={this.handleFileChange}></input>
+            </label>
+          </div>
         </div>
       </fieldset>
     );

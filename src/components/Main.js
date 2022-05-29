@@ -11,6 +11,7 @@ class Main extends Component {
       fName: "",
       lName: "",
       city: "",
+      country: "",
       profTitle: "",
       description: "",
       email: "",
@@ -19,25 +20,33 @@ class Main extends Component {
       qualName: "",
       startDate: "",
       endDate: "",
-      companyName: "",
-      positionTitle: "",
-      positionStartDate: "",
-      positionEndDate: "",
-      roleDescription: "",
+      jobs: [],
     };
 
     this.saveInfo = this.saveInfo.bind(this);
+    this.printState = this.printState.bind(this);
+    this.addJob = this.addJob.bind(this);
+  }
+
+  printState() {
+    console.log(this.state);
   }
 
   saveInfo(info) {
     this.setState(info);
   }
 
+  addJob(job) {
+    this.setState({
+      jobs: this.state.jobs.concat(job),
+    });
+  }
+
   render() {
     return (
       <div>
-        {this.props.activeMode === "view" && <ViewMode info={this.state} />}
-        {this.props.activeMode === "build" && <BuildView saveInfo={this.saveInfo} printInfo={this.printInfo} photoRef={this.photoFile} />}
+        {this.props.activeMode === "view" && <ViewMode info={this.state} printState={this.printState} />}
+        {this.props.activeMode === "build" && <BuildView info={this.state} saveInfo={this.saveInfo} addJob={this.addJob} />}
       </div>
     );
   }
