@@ -164,6 +164,53 @@
   padding: 48px 32px 32px;
 }
 
+.education-section > div {
+  position: relative;
+  padding-bottom: 32px;
+  padding-left: 32px;
+  border-left: solid 1px var(--cv-black);
+}
+
+.education-section > div:last-child {
+  padding-bottom: 0;
+}
+
+.cv-bullet {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  transform: translateX(-50%) translateY(5px);
+  background-color: var(--cv-black);
+}
+
+.cv-bullet:before {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(-100%);
+  display: block;
+  width: 4px;
+  height: 8px;
+  background-color: #fff;
+  content: '';
+}
+
+.cv-bullet:after {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(100%);
+  display: block;
+  width: 4px;
+  height: 8px;
+  background-color: #fff;
+  content: '';
+}
+
 .education-section p {
   margin-bottom: 4px;
 }

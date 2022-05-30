@@ -1,19 +1,19 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 
 class PersonalInfoEditor extends Component {
   constructor(props) {
-    super(props);
+    super(props)
 
-    this.handleFileChange = this.handleFileChange.bind(this);
+    this.handleFileChange = this.handleFileChange.bind(this)
   }
 
   handleFileChange(e) {
-    const file = e.target.files[0];
-    this.props.savePhotoFile(file);
+    const file = e.target.files[0]
+    this.props.savePhotoFile(file)
   }
 
   render() {
-    const { formValues, handleChange } = this.props;
+    const { formValues, handleChange } = this.props
 
     return (
       <fieldset>
@@ -58,8 +58,8 @@ class PersonalInfoEditor extends Component {
           </div>
         </div>
       </fieldset>
-    );
+    )
   }
 }
 
-export default PersonalInfoEditor;
+export default PersonalInfoEditor

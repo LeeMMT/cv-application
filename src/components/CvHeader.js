@@ -10,7 +10,7 @@ class CvHeader extends Component {
     const { info, dummyInfo, previewMode } = this.props
 
     const activeInfo = previewMode ? dummyInfo : info
-    const imgSrc = info.photoFile ? URL.createObjectURL(info.photoFile) : null
+    const imgSrc = activeInfo.photoFile ? URL.createObjectURL(activeInfo.photoFile) : null
 
     return (
       <div className="cv-header">

@@ -11,17 +11,23 @@ class CvExperience extends Component {
     const activeInfo = previewMode ? dummyInfo : info
 
     const jobs = activeInfo.jobs.map((job) => {
-      const startDate = new Date(job.positionStartDate).getFullYear()
-      const endDate = new Date(job.positionEndDate).getFullYear()
+      let startDate = null
+      let endDate = null
+
+      if (job.positionStartDate && job.positionEndDate) {
+        startDate = new Date(job.positionStartDate).getFullYear()
+        endDate = new Date(job.positionEndDate).getFullYear()
+      }
+
       return (
         <div key={job.id}>
           <div className="job-info">
             {<p className="cv-sub-heading position-info">{job.companyName}</p>}
-            {
+            {startDate && (
               <p>
                 {startDate} - {endDate}
               </p>
-            }
+            )}
           </div>
           <p className="cv-sub-heading lighter position-info">{job.positionTitle}</p>
           <p>{job.roleDescription}</p>

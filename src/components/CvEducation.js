@@ -10,19 +10,33 @@ class CvEducation extends Component {
 
     const activeInfo = previewMode ? dummyInfo : info
 
-    const startDate = activeInfo.startDate ? new Date(activeInfo.startDate).getFullYear() : null
-    const endDate = activeInfo.endDate ? new Date(activeInfo.endDate).getFullYear() : null
+    const qualifications = activeInfo.qualifications.map((qual) => {
+      let startDate = null
+      let endDate = null
+
+      if (qual.startDate && qual.endDate) {
+        startDate = new Date(qual.startDate).getFullYear()
+        endDate = new Date(qual.endDate).getFullYear()
+      }
+
+      return (
+        <div key={qual.id}>
+          <span className="cv-bullet"></span>
+          <p className="cv-sub-heading">{qual.qualName}</p>
+          <p>{qual.placeOfStudy}</p>
+          {startDate && (
+            <p>
+              {startDate} - {endDate}
+            </p>
+          )}
+        </div>
+      )
+    })
 
     return (
       <div className="education-section">
         <p className="cv-heading">EDUCATION</p>
-        <p className="cv-sub-heading">{activeInfo.qualName}</p>
-        <p>{activeInfo.placeOfStudy}</p>
-        {activeInfo.startDate && activeInfo.endDate && (
-          <p>
-            {startDate} - {endDate}
-          </p>
-        )}
+        {qualifications}
       </div>
     )
   }

@@ -22,11 +22,6 @@ class BuildView extends Component {
     this.toggleArea = this.toggleArea.bind(this)
   }
 
-  componentDidUpdate() {
-    console.log('BuildView ffffstate updated')
-    console.log(this.state)
-  }
-
   savePhotoFile(file) {
     this.setState({ ...this.state, photoFile: file })
   }
@@ -48,11 +43,6 @@ class BuildView extends Component {
     this.setState({
       [area]: this.state[area] ? false : true,
     })
-  }
-
-  componentDidUpdate() {
-    console.log('build view state updated')
-    console.log(this.state)
   }
 
   render() {
