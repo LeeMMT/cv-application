@@ -10,20 +10,18 @@ import { dummyInfo } from './DummyInfo'
 class ViewMode extends Component {
   constructor(props) {
     super(props)
-
-    this.previewMode = false
   }
 
   render() {
-    const { info } = this.props
+    const { info, previewMode } = this.props
 
     return (
       <div className="view-mode-container">
-        <CvHeader info={info} dummyInfo={dummyInfo} previewMode={this.previewMode} />
-        <CvPersonal info={info} dummyInfo={dummyInfo} previewMode={this.previewMode} />
-        <CvEducation info={info} dummyInfo={dummyInfo} previewMode={this.previewMode} />
-        <CvProfile info={info} dummyInfo={dummyInfo} previewMode={this.previewMode} />
-        <CvExperience info={info} dummyInfo={dummyInfo} previewMode={this.previewMode} />
+        <CvHeader info={info} dummyInfo={dummyInfo} previewMode={previewMode} />
+        <CvPersonal info={info} dummyInfo={dummyInfo} previewMode={previewMode} />
+        <CvEducation info={info} dummyInfo={dummyInfo} previewMode={previewMode} />
+        <CvProfile info={info} dummyInfo={dummyInfo} previewMode={previewMode} />
+        <CvExperience info={info} dummyInfo={dummyInfo} previewMode={previewMode} />
       </div>
     )
   }

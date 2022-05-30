@@ -74,7 +74,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  text-align: center;
 }
 
 .slide-info button {
@@ -98,8 +98,16 @@
 
 .slide-info p:first-child {
   color: var(--text);
+  font-family: 'Open Sans Med', Arial, Helvetica, sans-serif;
+  font-size: 16px;
 }
 
 .slide-info p:nth-child(2) {
   color: var(--soft-text);
+  margin-bottom: 4px;
+}
+
+.slide-info p:nth-child(3) {
+  color: var(--soft-text);
+  font-size: 12px;
 }

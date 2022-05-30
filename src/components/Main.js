@@ -76,7 +76,7 @@ class Main extends Component {
   render() {
     return (
       <div>
-        {this.props.activeMode === 'view' && <ViewMode info={this.state} />}
+        {this.props.activeMode === 'view' && <ViewMode info={this.state} previewMode={this.props.previewMode} />}
         {this.props.activeMode === 'build' && <BuildView info={this.state} saveInfo={this.saveInfo} addJob={this.addJob} addQual={this.addQual} />}
       </div>
     )
