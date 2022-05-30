@@ -3,7 +3,7 @@
 .cv-heading {
   margin-bottom: 24px !important;
   color: var(--cv-black) !important;
-  font-family: "Raleway Semi Bold", Arial, Helvetica, sans-serif;
+  font-family: 'Raleway Med', Arial, Helvetica, sans-serif;
   line-height: 1em;
   font-size: 18px;
   letter-spacing: 3px;
@@ -20,12 +20,12 @@
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 200px auto auto;
   grid-template-areas:
-    "header header header"
-    "personal profile profile"
-    "education experience experience";
+    'header header header'
+    'personal profile profile'
+    'education experience experience';
   box-shadow: rgba(17, 12, 46, 0.1) 0px 48px 100px 0px;
   margin: 0 auto;
-  font-family: "Raleway Reg", Arial, Helvetica, sans-serif;
+  font-family: 'Raleway Reg', Arial, Helvetica, sans-serif;
 }
 
 .view-mode-container p {
@@ -52,7 +52,8 @@
   z-index: 2;
   width: 100%;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
   font-size: 40px;
 }
 
@@ -63,17 +64,14 @@
 
 .header-title span {
   display: inline;
-  font-family: "Raleway Bold", Arial, Helvetica, sans-serif;
+  font-family: 'Raleway Semi Bold', Arial, Helvetica, sans-serif;
 }
 
 .prof-title {
-  position: absolute;
-  bottom: 0;
-  left: 0;
   color: var(--cv-black) !important;
-  font-family: "Raleway Reg", Arial, Helvetica, sans-serif !important;
+  font-family: 'Raleway Reg', Arial, Helvetica, sans-serif !important;
   font-size: 16px !important;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
 }
 
 .photo {
@@ -140,15 +138,15 @@
 }
 
 .icon.location {
-  background-image: url("../icons/location.svg");
+  background-image: url('../icons/location.svg');
 }
 
 .icon.call {
-  background-image: url("../icons/call.svg");
+  background-image: url('../icons/call.svg');
 }
 
 .icon.email {
-  background-image: url("../icons/email.svg");
+  background-image: url('../icons/email.svg');
 }
 
 /*Profile*/
@@ -172,7 +170,12 @@
 
 .cv-sub-heading {
   color: var(--cv-black);
-  font-family: "Open Sans Med", Arial, Helvetica, sans-serif;
+  font-family: 'Open Sans Med', Arial, Helvetica, sans-serif;
+}
+
+.cv-sub-heading.lighter {
+  color: var(--soft-text);
+  font-size: 14px;
 }
 
 .experience-section {
@@ -180,29 +183,41 @@
   padding: 48px 32px 32px;
 }
 
+.experience-section > div {
+  margin-bottom: 32px;
+}
+
+.experience-section > div:last-child {
+  margin-bottom: 0;
+}
+
 .job-info {
   display: flex;
   justify-content: space-between;
 }
 
+.job-info p {
+  margin-bottom: 0;
+}
+
 /*Fonts*/
 
 @font-face {
-  font-family: "Raleway Reg";
-  src: url("../fonts/Raleway/Raleway-Regular.ttf");
+  font-family: 'Raleway Reg';
+  src: url('../fonts/Raleway/Raleway-Regular.ttf');
 }
 
 @font-face {
-  font-family: "Raleway Med";
-  src: url("../fonts/Raleway/Raleway-Medium.ttf");
+  font-family: 'Raleway Med';
+  src: url('../fonts/Raleway/Raleway-Medium.ttf');
 }
 
 @font-face {
-  font-family: "Raleway Semi Bold";
-  src: url("../fonts/Raleway/Raleway-SemiBold.ttf");
+  font-family: 'Raleway Semi Bold';
+  src: url('../fonts/Raleway/Raleway-SemiBold.ttf');
 }
 
 @font-face {
-  font-family: "Raleway Bold";
-  src: url("../fonts/Raleway/Raleway-Bold.ttf");
+  font-family: 'Raleway Bold';
+  src: url('../fonts/Raleway/Raleway-Bold.ttf');
 }

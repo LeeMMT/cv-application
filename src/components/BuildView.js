@@ -22,11 +22,18 @@ class BuildView extends Component {
     this.toggleArea = this.toggleArea.bind(this)
   }
 
+  componentDidUpdate() {
+    console.log('BuildView ffffstate updated')
+    console.log(this.state)
+  }
+
   savePhotoFile(file) {
     this.setState({ ...this.state, photoFile: file })
   }
 
   saveInfo() {
+    console.log('before saveInfo in BuildView')
+    console.log(this.state)
     this.props.saveInfo(this.state)
   }
 
@@ -43,13 +50,18 @@ class BuildView extends Component {
     })
   }
 
+  componentDidUpdate() {
+    console.log('build view state updated')
+    console.log(this.state)
+  }
+
   render() {
-    const { info, saveInfo, addJob } = this.props
+    const { info, saveInfo, addJob, addQual } = this.props
     return (
       <form>
         <FormControls editingInfo={this.state} toggleArea={this.toggleArea} saveInfo={this.saveInfo} />
         {this.state.personal && <PersonalInfoEditor formValues={this.state} handleChange={this.handleChange} savePhotoFile={this.savePhotoFile} />}
-        {this.state.education && <EducationInfoEditor formValues={this.state} handleChange={this.handleChange} />}
+        {this.state.education && <EducationInfoEditor info={info} addQual={addQual} />}
         {this.state.experience && <ExperienceInfoEditor info={info} addJob={addJob} />}
       </form>
     )

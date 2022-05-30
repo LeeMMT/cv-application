@@ -5,26 +5,25 @@ import CvExperience from './CvExperience'
 import CvPersonal from './CvPersonal'
 import CvEducation from './CvEducation'
 import CvProfile from './CvProfile'
+import { dummyInfo } from './DummyInfo'
 
 class ViewMode extends Component {
   constructor(props) {
     super(props)
-  }
 
-  componentDidMount() {
-    this.props.printState()
+    this.previewMode = false
   }
 
   render() {
-    const { info, printState } = this.props
+    const { info } = this.props
 
     return (
       <div className="view-mode-container">
-        <CvHeader info={info} />
-        <CvPersonal info={info} />
-        <CvEducation info={info} />
-        <CvProfile info={info} />
-        <CvExperience info={info} />
+        <CvHeader info={info} dummyInfo={dummyInfo} previewMode={this.previewMode} />
+        <CvPersonal info={info} dummyInfo={dummyInfo} previewMode={this.previewMode} />
+        <CvEducation info={info} dummyInfo={dummyInfo} previewMode={this.previewMode} />
+        <CvProfile info={info} dummyInfo={dummyInfo} previewMode={this.previewMode} />
+        <CvExperience info={info} dummyInfo={dummyInfo} previewMode={this.previewMode} />
       </div>
     )
   }

@@ -1,33 +1,41 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 
 class CvExperience extends Component {
   constructor(props) {
-    super(props);
+    super(props)
   }
 
   render() {
-    const { info } = this.props;
+    const { info, dummyInfo, previewMode } = this.props
 
-    const startDate = info.positionStartDate ? new Date(info.positionStartDate).getFullYear() : null;
-    const endDate = info.positionEndDate ? new Date(info.positionEndDate).getFullYear() : null;
+    const activeInfo = previewMode ? dummyInfo : info
+
+    const jobs = activeInfo.jobs.map((job) => {
+      const startDate = new Date(job.positionStartDate).getFullYear()
+      const endDate = new Date(job.positionEndDate).getFullYear()
+      return (
+        <div key={job.id}>
+          <div className="job-info">
+            {<p className="cv-sub-heading position-info">{job.companyName}</p>}
+            {
+              <p>
+                {startDate} - {endDate}
+              </p>
+            }
+          </div>
+          <p className="cv-sub-heading lighter position-info">{job.positionTitle}</p>
+          <p>{job.roleDescription}</p>
+        </div>
+      )
+    })
 
     return (
       <div className="experience-section">
         <p className="cv-heading">EXPERIENCE</p>
-        <div className="job-info">
-          {info.positionTitle && <p>{info.positionTitle}</p>}
-
-          {info.positionStartDate && info.positionEndDate && (
-            <p>
-              {startDate} - {endDate}
-            </p>
-          )}
-        </div>
-        <p className="cv-sub-heading">{info.companyName}</p>
-        <p>{info.roleDescription}</p>
+        {jobs}
       </div>
-    );
+    )
   }
 }
 
-export default CvExperience;
+export default CvExperience

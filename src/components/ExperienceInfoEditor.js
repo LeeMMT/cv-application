@@ -15,8 +15,10 @@ class ExperienceInfoEditor extends Component {
       id: uniqid(),
     }
 
+    this.editMode = false
     this.handleChange = this.handleChange.bind(this)
     this.createJobObject = this.createJobObject.bind(this)
+    this.editJob = this.editJob.bind(this)
   }
 
   handleChange(e) {
@@ -29,7 +31,14 @@ class ExperienceInfoEditor extends Component {
     const jobEntry = {
       ...this.state,
     }
-    this.props.addJob(jobEntry)
+
+    if (this.editMode) {
+      this.props.addJob(jobEntry, true)
+      this.editMode = false
+    } else {
+      this.props.addJob(jobEntry)
+    }
+
     this.setState({
       companyName: '',
       positionTitle: '',
@@ -40,13 +49,21 @@ class ExperienceInfoEditor extends Component {
     })
   }
 
+  editJob(e) {
+    const id = e.target.getAttribute('data-key')
+    const job = this.props.info.jobs.find((entry) => entry.id === id)
+    this.setState({ ...job })
+    this.editMode = true
+  }
+
   render() {
     const { info } = this.props
+    let editing = this.editMode
 
     return (
       <fieldset>
-        <StoredJobInfo info={info} />
         <legend>Experience Information</legend>
+        <StoredJobInfo info={info} editJob={this.editJob} />
         <div className="two-col">
           <label htmlFor="companyName">Company Name:</label>
           <input id="companyName" name="companyName" value={this.state.companyName} onChange={this.handleChange}></input>
@@ -63,8 +80,8 @@ class ExperienceInfoEditor extends Component {
           <label htmlFor="mainTasks">Description of Role:</label>
           <textarea id="roleDescription" name="roleDescription" value={this.state.roleDescription} onChange={this.handleChange}></textarea>
         </div>
-        <div className="add-job-controls">
-          <p className="pseudo-label">Add position to CV</p>
+        <div className="add-info-controls">
+          <p className="pseudo-label">{editing ? 'Save' : 'Add job'}</p>
           <button id="add-job-btn" type="button" onClick={this.createJobObject}>
             <svg height="469.33333pt" viewBox="0 0 469.33333 469.33333" width="469.33333pt" xmlns="http://www.w3.org/2000/svg">
               <path

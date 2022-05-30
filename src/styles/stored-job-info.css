@@ -1,19 +1,52 @@
 .stored-job-info {
+  margin: 16px 0 32px;
   display: grid;
   grid-template-columns: 1fr auto;
+  column-gap: 16px;
 }
 
 .stored-job-info > div {
   padding: 16px;
+  border: solid 2px #ebebeb;
+  border-radius: 6px;
+}
+
+.stored-job-info > div:last-of-type {
+  padding: 64px;
+}
+
+.stored-job-info img {
+  display: block;
+  margin: 0 auto 24px;
+  max-width: 45%;
+}
+
+.stored-job-info p {
+  line-height: 1.4em;
 }
 
 .job-info-heading {
-  font-size: 18px;
+  font-family: 'Open Sans Med', Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 24px;
 }
 
 .swiper {
   width: 200px;
   height: 280px;
+}
+
+.default-card {
+  width: 200px;
+  height: 280px;
+  background: rgb(255, 255, 255);
+  background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, hsl(0, 0%, 90%) 100%);
+  box-shadow: rgba(50, 50, 93, 0.2) 0px 2px 5px -1px, rgba(0, 0, 0, 0.25) 0px 1px 3px -1px;
+  border-radius: 18px;
+  color: var(--text);
+  font-family: 'Open Sans Med', Arial, Helvetica, sans-serif;
+  font-size: 14px;
 }
 
 .swiper-slide {
@@ -24,6 +57,12 @@
   color: var(--text);
   font-family: 'Open Sans Med', Arial, Helvetica, sans-serif;
   font-size: 14px;
+}
+
+.swiper-pagination {
+  margin-top: 16px;
+  color: var(--text);
+  text-align: center;
 }
 
 .slide-info {

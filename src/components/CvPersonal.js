@@ -1,29 +1,33 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 
 class CvPersonal extends Component {
   constructor(props) {
-    super(props);
+    super(props)
   }
 
   render() {
-    const { info } = this.props;
+    const { info, dummyInfo, previewMode } = this.props
+
+    const activeInfo = previewMode ? dummyInfo : info
     return (
       <div className="personal-section">
         <div className="info-row">
           <i className="icon location"></i>
-          <p>{info.city}</p>
+          <p>
+            {activeInfo.city}, {activeInfo.country}
+          </p>
         </div>
         <div className="info-row">
           <i className="icon call"></i>
-          <p>{info.phoneNumber}</p>
+          <p>{activeInfo.phoneNumber}</p>
         </div>
         <div className="info-row">
           <i className="icon email"></i>
-          <p>{info.email}</p>
+          <p>{activeInfo.email}</p>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default CvPersonal;
+export default CvPersonal

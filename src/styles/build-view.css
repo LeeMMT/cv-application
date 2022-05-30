@@ -169,7 +169,7 @@ input[type='file'] {
   background-color: hsl(254, 47%, 61%);
 }
 
-.add-job-controls {
+.add-info-controls {
   margin: 16px 0 0 auto;
   width: max-content;
   display: flex;
@@ -178,12 +178,13 @@ input[type='file'] {
   font-size: 14px;
 }
 
-.add-job-controls p {
+.add-info-controls p {
   color: var(--soft-text);
   font-family: 'Open Sans Italic', Arial, Helvetica, sans-serif;
 }
 
-#add-job-btn {
+#add-job-btn,
+#add-qual-btn {
   display: block;
   width: max-content;
   height: max-content;
@@ -196,14 +197,16 @@ input[type='file'] {
   cursor: pointer;
 }
 
-#add-job-btn svg {
+#add-job-btn svg,
+#add-qual-btn svg {
   display: block;
   width: 20px;
   height: 20px;
   color: #858585;
 }
 
-#add-job-btn:hover {
+#add-job-btn:hover,
+#add-qual-btn:hover {
   background-color: hsl(0, 0%, 95%);
   box-shadow: rgba(50, 50, 93, 0.2) 0px 2px 5px -1px inset, rgba(0, 0, 0, 0.25) 0px 1px 3px -1px inset;
 }

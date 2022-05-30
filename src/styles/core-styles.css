@@ -3,11 +3,11 @@
   --secondary: #629bab;
   --third: #e8d5b5;
   --beige: hsl(16, 15%, 80%);
-  --text: hsl(0, 0%, 25%);
+  --text: hsl(0, 0%, 35%);
   --cv-black: hsl(15, 5%, 15%);
   --cv-text: hsl(0, 0%, 35%);
   --soft-text: hsl(0, 0%, 45%);
-  --subtle-text: hsl(0, 0%, 65%);
+  --subtle-text: #a6a6a6;
 }
 
 *,
