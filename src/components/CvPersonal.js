@@ -6,9 +6,9 @@ class CvPersonal extends Component {
   }
 
   render() {
-    const { info, dummyInfo, previewMode } = this.props
+    const { data, dummyInfo } = this.props
 
-    const activeInfo = previewMode ? dummyInfo : info
+    const activeInfo = data.quickPreview ? dummyInfo : data
     return (
       <div className="personal-section">
         <div className="info-row">

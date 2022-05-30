@@ -7,32 +7,50 @@ class App extends Component {
     super(props)
 
     this.state = {
-      activeMode: 'view',
-      previewMode: false,
+      activeView: 'preview',
+      quickPreview: false,
+
+      general: {
+        fName: '',
+        lName: '',
+        city: '',
+        country: '',
+        profTitle: '',
+        description: '',
+        email: '',
+        phoneNumber: '',
+      },
+
+      jobs: [],
+      qualifications: [],
     }
+
     this.toggleMode = this.toggleMode.bind(this)
-    this.togglePreview = this.togglePreview.bind(this)
+    this.toggleDummyData = this.toggleDummyData.bind(this)
+    //this.saveInfo = this.saveInfo.bind(this)
+    //this.addJob = this.addJob.bind(this)
+    //this.addQual = this.addQual.bind(this)
   }
 
   toggleMode(e) {
     this.setState({
-      activeMode: e.target.getAttribute('data-mode'),
+      activeView: e.target.getAttribute('data-mode'),
     })
   }
 
-  togglePreview() {
-    if (this.state.previewMode) {
-      this.setState({ previewMode: false })
+  toggleDummyData() {
+    if (this.state.quickPreview) {
+      this.setState({ quickPreview: false })
     } else {
-      this.setState({ previewMode: true })
+      this.setState({ quickPreview: true })
     }
   }
 
   render() {
     return (
       <div>
-        <Header activeMode={this.state.activeMode} toggleMode={this.toggleMode} togglePreview={this.togglePreview} />
-        <Main activeMode={this.state.activeMode} previewMode={this.state.previewMode} />
+        <Header activeView={this.state.activeView} toggleMode={this.toggleMode} toggleDummyData={this.toggleDummyData} />
+        <Main data={this.state} />
       </div>
     )
   }

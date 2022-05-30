@@ -6,9 +6,9 @@ class CvEducation extends Component {
   }
 
   render() {
-    const { info, dummyInfo, previewMode } = this.props
+    const { data, dummyInfo } = this.props
 
-    const activeInfo = previewMode ? dummyInfo : info
+    const activeInfo = data.quickPreview ? dummyInfo : data
 
     const qualifications = activeInfo.qualifications.map((qual) => {
       let startDate = null

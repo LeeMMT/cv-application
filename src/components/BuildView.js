@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import PersonalInfoEditor from './PersonalInfoEditor'
+import uniqid from 'uniqid'
+import GeneralInfoEditor from './GeneralInfoEditor'
 import EducationInfoEditor from './EducationInfoEditor'
 import ExperienceInfoEditor from './ExperienceInfoEditor'
 import '../styles/build-view.css'
@@ -10,31 +11,50 @@ class BuildView extends Component {
     super(props)
 
     this.state = {
-      ...this.props.info,
       personal: true,
       education: true,
       experience: true,
+
+      general: this.props.data.general,
+
+      education: {
+        placeOfStudy: '',
+        qualName: '',
+        startDate: '',
+        endDate: '',
+        id: uniqid(),
+      },
+
+      jobs: {
+        companyName: '',
+        positionTitle: '',
+        positionStartDate: '',
+        positionEndDate: '',
+        roleDescription: '',
+        id: uniqid(),
+      },
     }
 
-    this.savePhotoFile = this.savePhotoFile.bind(this)
-    this.saveInfo = this.saveInfo.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.handleFileChange = this.handleFileChange.bind(this)
+    this.saveInfo = this.saveInfo.bind(this)
     this.toggleArea = this.toggleArea.bind(this)
-  }
-
-  savePhotoFile(file) {
-    this.setState({ ...this.state, photoFile: file })
-  }
-
-  saveInfo() {
-    console.log('before saveInfo in BuildView')
-    console.log(this.state)
-    this.props.saveInfo(this.state)
   }
 
   handleChange(e) {
     this.setState({
       [e.target.name]: e.target.value,
+    })
+  }
+
+  handleFileChange(e) {
+    const file = e.target.files[0]
+    this.props.savePhotoFile(file)
+    this.setState({
+      general: {
+        ...this.state.general,
+        photoFile: file,
+      },
     })
   }
 
@@ -46,13 +66,14 @@ class BuildView extends Component {
   }
 
   render() {
-    const { info, saveInfo, addJob, addQual } = this.props
+    const { data } = this.props
+
     return (
       <form>
-        <FormControls editingInfo={this.state} toggleArea={this.toggleArea} saveInfo={this.saveInfo} />
-        {this.state.personal && <PersonalInfoEditor formValues={this.state} handleChange={this.handleChange} savePhotoFile={this.savePhotoFile} />}
-        {this.state.education && <EducationInfoEditor info={info} addQual={addQual} />}
-        {this.state.experience && <ExperienceInfoEditor info={info} addJob={addJob} />}
+        <FormControls editingInfo={this.state} toggleArea={this.toggleArea} />
+        {this.state.personal && <GeneralInfoEditor editingInfo={this.state} handleChange={this.handleChange} handleFileChange={this.handleFileChange} />}
+        {this.state.education && <EducationInfoEditor data={data} editingInfo={this.state} />}
+        {this.state.experience && <ExperienceInfoEditor data={data} editingInfo={this.state} />}
       </form>
     )
   }

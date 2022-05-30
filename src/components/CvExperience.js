@@ -6,9 +6,9 @@ class CvExperience extends Component {
   }
 
   render() {
-    const { info, dummyInfo, previewMode } = this.props
+    const { data, dummyInfo } = this.props
 
-    const activeInfo = previewMode ? dummyInfo : info
+    const activeInfo = data.quickPreview ? dummyInfo : data
 
     const jobs = activeInfo.jobs.map((job) => {
       let startDate = null

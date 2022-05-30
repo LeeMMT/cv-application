@@ -1,15 +1,8 @@
 import React, { Component } from 'react'
 
-class PersonalInfoEditor extends Component {
+class GeneralInfoEditor extends Component {
   constructor(props) {
     super(props)
-
-    this.handleFileChange = this.handleFileChange.bind(this)
-  }
-
-  handleFileChange(e) {
-    const file = e.target.files[0]
-    this.props.savePhotoFile(file)
   }
 
   render() {
@@ -62,4 +55,4 @@ class PersonalInfoEditor extends Component {
   }
 }
 
-export default PersonalInfoEditor
+export default GeneralInfoEditor

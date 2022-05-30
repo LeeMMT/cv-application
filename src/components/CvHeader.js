@@ -7,9 +7,9 @@ class CvHeader extends Component {
   }
 
   render() {
-    const { info, dummyInfo, previewMode } = this.props
+    const { data, dummyInfo } = this.props
 
-    const activeInfo = previewMode ? dummyInfo : info
+    const activeInfo = data.quickPreview ? dummyInfo : data
     const imgSrc = activeInfo.photoFile ? URL.createObjectURL(activeInfo.photoFile) : null
 
     return (
@@ -22,7 +22,7 @@ class CvHeader extends Component {
           <p className="prof-title">{activeInfo.profTitle.toUpperCase()}</p>
         </div>
         {imgSrc && <img className="photo" src={imgSrc}></img>}
-        {previewMode && <img className="photo" src={placeholderImg}></img>}
+        {data.quickPreview && <img className="photo" src={placeholderImg}></img>}
         <div className="shape-divider">
           <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
             <path d="M1200 120L0 16.48 0 0 1200 0 1200 120z" className="shape-fill"></path>

@@ -13,15 +13,14 @@ class ViewMode extends Component {
   }
 
   render() {
-    const { info, previewMode } = this.props
-
+    const { data } = this.props
     return (
       <div className="view-mode-container">
-        <CvHeader info={info} dummyInfo={dummyInfo} previewMode={previewMode} />
-        <CvPersonal info={info} dummyInfo={dummyInfo} previewMode={previewMode} />
-        <CvEducation info={info} dummyInfo={dummyInfo} previewMode={previewMode} />
-        <CvProfile info={info} dummyInfo={dummyInfo} previewMode={previewMode} />
-        <CvExperience info={info} dummyInfo={dummyInfo} previewMode={previewMode} />
+        <CvHeader data={data} dummyInfo={dummyInfo} />
+        <CvPersonal data={data} dummyInfo={dummyInfo} />
+        <CvEducation data={data} dummyInfo={dummyInfo} />
+        <CvProfile data={data} dummyInfo={dummyInfo} />
+        <CvExperience data={data} dummyInfo={dummyInfo} />
       </div>
     )
   }
