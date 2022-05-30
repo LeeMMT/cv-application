@@ -51,7 +51,9 @@ class ExperienceInfoEditor extends Component {
   }
 
   editJob(e) {
+    console.log('edit firing')
     const id = e.target.getAttribute('data-key')
+    console.log(id)
     const job = this.props.info.jobs.find((entry) => entry.id === id)
     this.setState({ ...job })
     this.editMode = true

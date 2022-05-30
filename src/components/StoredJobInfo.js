@@ -27,8 +27,8 @@ class StoredJobInfo extends Component {
             dataId={id}
             primaryText={primaryText}
             secondaryText={secondaryText}
-            startDate={startDate}
-            endDate={endDate}
+            dateOne={startDate}
+            dateTwo={endDate}
             clickHandler={editJob}
           ></CardSlide>
         </SwiperSlide>
