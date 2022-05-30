@@ -32,7 +32,7 @@ class Main extends Component {
   saveInfo(info) {
     console.log('before saveInfo in Main. Info below should match state printed above')
     console.log(info)
-    this.setState(info)
+    this.setState({ info })
   }
   componentDidUpdate() {
     console.log('Main now updated. New state...')
