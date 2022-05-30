@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { EffectCards, Pagination } from 'swiper'
+import CardSlide from './CardSlide'
 import 'swiper/css'
 import 'swiper/css/effect-cards'
 import '../styles/stored-job-info.css'
@@ -14,15 +15,21 @@ class StoredQualInfo extends Component {
   render() {
     const { info, editQual } = this.props
     const slides = info.qualifications.map((qual) => {
+      const id = qual.id
+      const primaryText = qual.qualName
+      const secondaryText = qual.placeOfStudy
+      const startDate = qual.startDate
+      const endDate = qual.endDate
       return (
-        <SwiperSlide key={qual.id}>
-          <div className="slide-info">
-            <p>{qual.qualName}</p>
-            <p>{qual.placeOfStudy}</p>
-            <button type="button" data-key={qual.id} onClick={editQual}>
-              Edit
-            </button>
-          </div>
+        <SwiperSlide key={id}>
+          <CardSlide
+            dataId={id}
+            primaryText={primaryText}
+            secondaryText={secondaryText}
+            dateOne={startDate}
+            dateTwo={endDate}
+            clickHandler={editQual}
+          ></CardSlide>
         </SwiperSlide>
       )
     })

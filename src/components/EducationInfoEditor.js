@@ -18,6 +18,7 @@ class EducationInfoEditor extends Component {
     this.createQualObject = this.createQualObject.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.editQual = this.editQual.bind(this)
+    this.cancelEdit = this.cancelEdit.bind(this)
   }
 
   createQualObject() {
@@ -47,7 +48,24 @@ class EducationInfoEditor extends Component {
     })
   }
 
-  editQual() {}
+  editQual(e) {
+    const id = e.target.getAttribute('data-key')
+    const qual = this.props.info.qualifications.find((entry) => entry.id === id)
+    this.setState({ ...qual })
+    this.editMode = true
+  }
+
+  cancelEdit() {
+    this.setState({
+      companyName: '',
+      positionTitle: '',
+      positionStartDate: '',
+      positionEndDate: '',
+      roleDescription: '',
+      id: uniqid(),
+    })
+    this.editMode = false
+  }
 
   render() {
     const { info, addQual } = this.props
