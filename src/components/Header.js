@@ -7,7 +7,7 @@ class Header extends Component {
   }
 
   render() {
-    const { activeMode, toggleMode, toggleDummyData } = this.props
+    const { activeView, toggleMode, toggleDummyData } = this.props
 
     return (
       <header>
@@ -21,10 +21,10 @@ class Header extends Component {
                 <span className="slider round"></span>
               </label>
             </button>
-            <button className={activeMode === 'preview' ? 'nav-btn active-mode' : 'nav-btn'} data-mode="preview" onClick={toggleMode}>
+            <button className={activeView === 'preview' ? 'nav-btn active-mode' : 'nav-btn'} data-mode="preview" onClick={toggleMode}>
               PREVIEW
             </button>
-            <button className={activeMode === 'edit' ? 'nav-btn active-mode' : 'nav-btn'} data-mode="edit" onClick={toggleMode}>
+            <button className={activeView === 'edit' ? 'nav-btn active-mode' : 'nav-btn'} data-mode="edit" onClick={toggleMode}>
               EDIT
             </button>
           </nav>

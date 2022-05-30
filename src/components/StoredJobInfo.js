@@ -13,9 +13,9 @@ class StoredJobInfo extends Component {
   }
 
   render() {
-    const { info, editJob } = this.props
+    const { data, editJob } = this.props
 
-    const slides = info.jobs.map((job) => {
+    const slides = data.map((job) => {
       const id = job.id
       const primaryText = job.companyName
       const secondaryText = job.positionTitle
@@ -45,7 +45,7 @@ class StoredJobInfo extends Component {
           </p>
         </div>
         <div>
-          {info.jobs.length ? (
+          {data.length ? (
             <Swiper effect={'cards'} grabCursor={true} modules={[EffectCards, Pagination]} pagination={{ type: 'fraction' }} className="mySwiper">
               {slides}
             </Swiper>

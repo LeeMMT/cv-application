@@ -25,7 +25,7 @@ class BuildView extends Component {
         id: uniqid(),
       },
 
-      jobs: {
+      job: {
         companyName: '',
         positionTitle: '',
         positionStartDate: '',
@@ -37,13 +37,22 @@ class BuildView extends Component {
 
     this.handleChange = this.handleChange.bind(this)
     this.handleFileChange = this.handleFileChange.bind(this)
-    this.saveInfo = this.saveInfo.bind(this)
+    this.updateData = this.updateData.bind(this)
     this.toggleArea = this.toggleArea.bind(this)
   }
 
+  updateData() {
+    const general = this.state.general
+    this.props.saveInfo(general)
+  }
+
   handleChange(e) {
+    const objectKey = e.target.getAttribute('data-object')
     this.setState({
-      [e.target.name]: e.target.value,
+      [objectKey]: {
+        ...this.state[objectKey],
+        [e.target.name]: e.target.value,
+      },
     })
   }
 
@@ -65,15 +74,21 @@ class BuildView extends Component {
     })
   }
 
+  componentDidUpdate() {
+    console.log(this.state)
+  }
+
   render() {
-    const { data } = this.props
+    const { data, saveInfo } = this.props
 
     return (
       <form>
-        <FormControls editingInfo={this.state} toggleArea={this.toggleArea} />
-        {this.state.personal && <GeneralInfoEditor editingInfo={this.state} handleChange={this.handleChange} handleFileChange={this.handleFileChange} />}
-        {this.state.education && <EducationInfoEditor data={data} editingInfo={this.state} />}
-        {this.state.experience && <ExperienceInfoEditor data={data} editingInfo={this.state} />}
+        <FormControls editingInfo={this.state} toggleArea={this.toggleArea} updateData={this.updateData} />
+        {this.state.personal && (
+          <GeneralInfoEditor editingInfo={this.state.general} handleChange={this.handleChange} handleFileChange={this.handleFileChange} />
+        )}
+        {this.state.education && <EducationInfoEditor data={data} editingInfo={this.state.education} />}
+        {this.state.experience && <ExperienceInfoEditor data={data} editingInfo={this.state.job} />}
       </form>
     )
   }

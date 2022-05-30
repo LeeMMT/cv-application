@@ -13,8 +13,9 @@ class StoredQualInfo extends Component {
   }
 
   render() {
-    const { info, editQual } = this.props
-    const slides = info.qualifications.map((qual) => {
+    const { data, editQual } = this.props
+
+    const slides = data.map((qual) => {
       const id = qual.id
       const primaryText = qual.qualName
       const secondaryText = qual.placeOfStudy
@@ -44,7 +45,7 @@ class StoredQualInfo extends Component {
           </p>
         </div>
         <div>
-          {info.qualifications.length ? (
+          {data.length ? (
             <Swiper effect={'cards'} grabCursor={true} modules={[EffectCards, Pagination]} pagination={{ type: 'fraction' }} className="mySwiper">
               {slides}
             </Swiper>

@@ -5,7 +5,7 @@ class FormControls extends Component {
   }
 
   render() {
-    const { editingInfo, toggleArea } = this.props
+    const { editingInfo, toggleArea, updateData } = this.props
     return (
       <div className="form-controls">
         <p>Toggle buttons on & off to hide/show areas</p>
@@ -20,7 +20,7 @@ class FormControls extends Component {
             Experience
           </button>
         </div>
-        <button id="save-btn" type="button" onClick={saveInfo}>
+        <button id="save-btn" type="button" onClick={updateData}>
           Save
         </button>
       </div>

@@ -14,16 +14,16 @@ class CvPersonal extends Component {
         <div className="info-row">
           <i className="icon location"></i>
           <p>
-            {activeInfo.city}, {activeInfo.country}
+            {activeInfo.general.city}, {activeInfo.general.country}
           </p>
         </div>
         <div className="info-row">
           <i className="icon call"></i>
-          <p>{activeInfo.phoneNumber}</p>
+          <p>{activeInfo.general.phoneNumber}</p>
         </div>
         <div className="info-row">
           <i className="icon email"></i>
-          <p>{activeInfo.email}</p>
+          <p>{activeInfo.general.email}</p>
         </div>
       </div>
     )

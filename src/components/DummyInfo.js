@@ -1,15 +1,16 @@
 import uniqid from 'uniqid'
 
 export const dummyInfo = {
-  fName: 'Jardani',
-  lName: 'Jovonovich',
-  city: 'New York',
-  country: 'USA',
-  profTitle: 'Assassin',
-  description:
-    'I was born in Padhorje, Byelorussian SSR. I have a background in numerous martial arts, and have spent my life jumping between different sorts of jobs, but since marrying my beloved wife Helen, have decided to settle down and pursue a new career as a software developer.',
-  email: 'babayaga@underground.com',
-  phoneNumber: '07633288821',
+  general: {
+    fName: 'Jardani',
+    lName: 'Jovonovich',
+    city: 'New York',
+    country: 'USA',
+    profTitle: 'Assassin',
+    bio: 'I was born in Padhorje, Byelorussian SSR. I have a background in numerous martial arts, and have spent my life jumping between different sorts of jobs, but since marrying my beloved wife Helen, have decided to settle down and pursue a new career as a software developer.',
+    email: 'babayaga@underground.com',
+    phoneNumber: '07633288821',
+  },
   jobs: [
     {
       companyName: 'Ruska Roma',

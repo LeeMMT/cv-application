@@ -12,14 +12,17 @@ class CvHeader extends Component {
     const activeInfo = data.quickPreview ? dummyInfo : data
     const imgSrc = activeInfo.photoFile ? URL.createObjectURL(activeInfo.photoFile) : null
 
+    console.log(activeInfo)
+    console.log(activeInfo.general.fname)
+
     return (
       <div className="cv-header">
         <div className="header-title">
           <p>
-            <span>{activeInfo.fName} </span>
-            {activeInfo.lName}
+            <span>{activeInfo.general.fName} </span>
+            {activeInfo.general.lName}
           </p>
-          <p className="prof-title">{activeInfo.profTitle.toUpperCase()}</p>
+          <p className="prof-title">{activeInfo.general.profTitle.toUpperCase()}</p>
         </div>
         {imgSrc && <img className="photo" src={imgSrc}></img>}
         {data.quickPreview && <img className="photo" src={placeholderImg}></img>}

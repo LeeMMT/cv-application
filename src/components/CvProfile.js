@@ -12,7 +12,7 @@ class CvProfile extends Component {
     return (
       <div className="profile-section">
         <p className="cv-heading">PROFILE</p>
-        <p>{activeInfo.description}</p>
+        <p>{activeInfo.general.bio}</p>
       </div>
     )
   }

@@ -68,26 +68,28 @@ class EducationInfoEditor extends Component {
   }
 
   render() {
-    const { info, addQual } = this.props
+    const { data, editingInfo } = this.props
     let editing = this.editMode
 
     return (
       <fieldset>
         <legend>Education Information</legend>
-        <StoredQualInfo info={info} editQual={this.editQual} />
+        <StoredQualInfo data={data.qualifications} editQual={this.editQual} />
+
         <div className="two-col">
           <label htmlFor="placeOfStudy">Place of Study:</label>
-          <input id="placeOfStudy" name="placeOfStudy" value={this.state.placeOfStudy} onChange={this.handleChange}></input>
+          <input id="placeOfStudy" name="placeOfStudy" value={editingInfo.placeOfStudy} onChange={this.handleChange}></input>
 
           <label htmlFor="qualName">Name of Qualification</label>
-          <input id="qualName" name="qualName" value={this.state.qualName} onChange={this.handleChange}></input>
+          <input id="qualName" name="qualName" value={editingInfo.qualName} onChange={this.handleChange}></input>
 
           <label htmlFor="startDate">Start Date:</label>
-          <input id="startDate" type="date" name="startDate" value={this.state.startDate} onChange={this.handleChange}></input>
+          <input id="startDate" type="date" name="startDate" value={editingInfo.startDate} onChange={this.handleChange}></input>
 
           <label htmlFor="endDate">End Date:</label>
-          <input id="endDate" type="date" name="endDate" value={this.state.endDate} onChange={this.handleChange}></input>
+          <input id="endDate" type="date" name="endDate" value={editingInfo.endDate} onChange={this.handleChange}></input>
         </div>
+
         <div className="add-and-edit-container">
           <button className={this.editMode ? 'cancel-edit-btn visible' : 'cancel-edit-btn'} type="button" onClick={this.cancelEdit}>
             Cancel edit

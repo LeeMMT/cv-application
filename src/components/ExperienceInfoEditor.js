@@ -70,28 +70,28 @@ class ExperienceInfoEditor extends Component {
   }
 
   render() {
-    const { info } = this.props
+    const { data, editingInfo } = this.props
     let editing = this.editMode
 
     return (
       <fieldset>
         <legend>Experience Information</legend>
-        <StoredJobInfo info={info} editJob={this.editJob} />
+        <StoredJobInfo data={data.jobs} editJob={this.editJob} />
         <div className="two-col">
           <label htmlFor="companyName">Company Name:</label>
-          <input id="companyName" name="companyName" value={this.state.companyName} onChange={this.handleChange}></input>
+          <input id="companyName" name="companyName" value={editingInfo.companyName} onChange={this.handleChange}></input>
 
           <label htmlFor="positionTitle">Position Title:</label>
-          <input id="positionTitle" name="positionTitle" value={this.state.positionTitle} onChange={this.handleChange}></input>
+          <input id="positionTitle" name="positionTitle" value={editingInfo.positionTitle} onChange={this.handleChange}></input>
 
           <label htmlFor="positionStartDate">Start Date:</label>
-          <input id="positionStartDate" name="positionStartDate" type="date" value={this.state.positionStartDate} onChange={this.handleChange}></input>
+          <input id="positionStartDate" name="positionStartDate" type="date" value={editingInfo.positionStartDate} onChange={this.handleChange}></input>
 
           <label htmlFor="positionStartDate">End Date:</label>
-          <input id="positionEndDate" name="positionEndDate" type="date" value={this.state.positionEndDate} onChange={this.handleChange}></input>
+          <input id="positionEndDate" name="positionEndDate" type="date" value={editingInfo.positionEndDate} onChange={this.handleChange}></input>
 
           <label htmlFor="mainTasks">Description of Role:</label>
-          <textarea id="roleDescription" name="roleDescription" value={this.state.roleDescription} onChange={this.handleChange}></textarea>
+          <textarea id="roleDescription" name="roleDescription" value={editingInfo.roleDescription} onChange={this.handleChange}></textarea>
         </div>
         <div className="add-and-edit-container">
           <button className={this.editMode ? 'cancel-edit-btn visible' : 'cancel-edit-btn'} type="button" onClick={this.cancelEdit}>
