@@ -19,9 +19,18 @@ class StoredJobInfo extends Component {
       const id = job.id
       const primaryText = job.companyName
       const secondaryText = job.positionTitle
+      const startDate = job.positionStartDate
+      const endDate = job.positionEndDate
       return (
         <SwiperSlide key={id}>
-          <CardSlide dataid={id} primarytext={primaryText} secondarytext={secondaryText} editJob={editJob}></CardSlide>
+          <CardSlide
+            dataId={id}
+            primaryText={primaryText}
+            secondaryText={secondaryText}
+            startDate={startDate}
+            endDate={endDate}
+            clickHandler={editJob}
+          ></CardSlide>
         </SwiperSlide>
       )
     })

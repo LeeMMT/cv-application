@@ -5,11 +5,26 @@ class CardSlide extends Component {
   }
 
   render() {
+    const { id, primaryText, secondaryText, dateOne, dateTwo, clickHandler } = this.props
+
+    let startDate = null
+    let endDate = null
+
+    if (dateOne && dateTwo) {
+      startDate = new Date(this.props.startdate).getFullYear()
+      endDate = new Date(this.props.enddate).getFullYear()
+    }
+
     return (
       <div className="slide-info">
-        <p>{this.props.primarytext}</p>
-        <p>{this.props.secondarytext}</p>
-        <button type="button" data-key={this.props.dataid} onClick={this.props.editJob}>
+        <p>{primaryText}</p>
+        <p>{secondaryText}</p>
+        {startDate && endDate && (
+          <p>
+            {startDate} - {endDate}
+          </p>
+        )}
+        <button type="button" data-key={id} onClick={clickHandler}>
           Edit
         </button>
       </div>

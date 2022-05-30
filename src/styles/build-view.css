@@ -169,10 +169,17 @@ input[type='file'] {
   background-color: hsl(254, 47%, 61%);
 }
 
-.add-info-controls {
-  margin: 16px 0 0 auto;
-  width: max-content;
+.add-and-edit-container {
+  margin-top: 16px;
   display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+.add-info-controls {
+  width: max-content;
+  display: inline-flex;
   gap: 16px;
   align-items: center;
   font-size: 14px;
@@ -185,7 +192,6 @@ input[type='file'] {
 
 #add-job-btn,
 #add-qual-btn {
-  display: block;
   width: max-content;
   height: max-content;
   padding: 8px;
@@ -209,4 +215,23 @@ input[type='file'] {
 #add-qual-btn:hover {
   background-color: hsl(0, 0%, 95%);
   box-shadow: rgba(50, 50, 93, 0.2) 0px 2px 5px -1px inset, rgba(0, 0, 0, 0.25) 0px 1px 3px -1px inset;
+}
+
+.cancel-edit-btn {
+  display: none;
+  width: max-content;
+  height: max-content;
+  padding: 8px;
+  border: none;
+  background-color: transparent;
+  font-family: 'Open Sans Reg', Arial, Helvetica, sans-serif;
+  cursor: pointer;
+}
+
+.cancel-edit-btn.visible {
+  display: block;
+}
+
+.cancel-edit-btn:hover {
+  text-decoration: underline;
 }

@@ -19,6 +19,7 @@ class ExperienceInfoEditor extends Component {
     this.handleChange = this.handleChange.bind(this)
     this.createJobObject = this.createJobObject.bind(this)
     this.editJob = this.editJob.bind(this)
+    this.cancelEdit = this.cancelEdit.bind(this)
   }
 
   handleChange(e) {
@@ -56,6 +57,18 @@ class ExperienceInfoEditor extends Component {
     this.editMode = true
   }
 
+  cancelEdit() {
+    this.setState({
+      companyName: '',
+      positionTitle: '',
+      positionStartDate: '',
+      positionEndDate: '',
+      roleDescription: '',
+      id: uniqid(),
+    })
+    this.editMode = false
+  }
+
   render() {
     const { info } = this.props
     let editing = this.editMode
@@ -80,16 +93,21 @@ class ExperienceInfoEditor extends Component {
           <label htmlFor="mainTasks">Description of Role:</label>
           <textarea id="roleDescription" name="roleDescription" value={this.state.roleDescription} onChange={this.handleChange}></textarea>
         </div>
-        <div className="add-info-controls">
-          <p className="pseudo-label">{editing ? 'Save' : 'Add job'}</p>
-          <button id="add-job-btn" type="button" onClick={this.createJobObject}>
-            <svg height="469.33333pt" viewBox="0 0 469.33333 469.33333" width="469.33333pt" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="m437.332031 192h-160v-160c0-17.664062-14.335937-32-32-32h-21.332031c-17.664062 0-32 14.335938-32 32v160h-160c-17.664062 0-32 14.335938-32 32v21.332031c0 17.664063 14.335938 32 32 32h160v160c0 17.664063 14.335938 32 32 32h21.332031c17.664063 0 32-14.335937 32-32v-160h160c17.664063 0 32-14.335937 32-32v-21.332031c0-17.664062-14.335937-32-32-32zm0 0"
-                fill="#858585"
-              />
-            </svg>
+        <div className="add-and-edit-container">
+          <button className={this.editMode ? 'cancel-edit-btn visible' : 'cancel-edit-btn'} type="button" onClick={this.cancelEdit}>
+            Cancel edit
           </button>
+          <div className="add-info-controls">
+            <p className="pseudo-label">{editing ? 'Save' : 'Add job'}</p>
+            <button id="add-job-btn" type="button" onClick={this.createJobObject}>
+              <svg height="469.33333pt" viewBox="0 0 469.33333 469.33333" width="469.33333pt" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="m437.332031 192h-160v-160c0-17.664062-14.335937-32-32-32h-21.332031c-17.664062 0-32 14.335938-32 32v160h-160c-17.664062 0-32 14.335938-32 32v21.332031c0 17.664063 14.335938 32 32 32h160v160c0 17.664063 14.335938 32 32 32h21.332031c17.664063 0 32-14.335937 32-32v-160h160c17.664063 0 32-14.335937 32-32v-21.332031c0-17.664062-14.335937-32-32-32zm0 0"
+                  fill="#858585"
+                />
+              </svg>
+            </button>
+          </div>
         </div>
       </fieldset>
     )
