@@ -9,12 +9,12 @@ class Main extends Component {
   }
 
   render() {
-    const { data, saveInfo, saveNewQual } = this.props
+    const { data, saveInfo, saveNewQual, saveNewJob } = this.props
 
     return (
       <div>
         {data.activeView === 'preview' && <ViewMode data={data} />}
-        {data.activeView === 'edit' && <BuildView data={data} saveInfo={saveInfo} saveNewQual={this.saveNewQual} />}
+        {data.activeView === 'edit' && <BuildView data={data} saveInfo={saveInfo} saveNewQual={saveNewQual} saveNewJob={saveNewJob} />}
       </div>
     )
   }

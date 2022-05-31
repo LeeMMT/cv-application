@@ -43,6 +43,13 @@ class BuildView extends Component {
     this.updateData = this.updateData.bind(this)
     this.toggleArea = this.toggleArea.bind(this)
     this.addQual = this.addQual.bind(this)
+    this.addJob = this.addJob.bind(this)
+    this.editQual = this.editQual.bind(this)
+  }
+
+  componentDidUpdate() {
+    console.log('Buildview updated')
+    console.log(this.state)
   }
 
   updateData() {
@@ -79,24 +86,42 @@ class BuildView extends Component {
   }
 
   addQual() {
-    const qualEntry = {
-      ...this.state,
-    }
+    this.props.saveNewQual({ ...this.state.education })
+    this.setState({
+      education: {
+        placeOfStudy: '',
+        qualName: '',
+        startDate: '',
+        endDate: '',
+        id: uniqid(),
+      },
+    })
+  }
 
-    if (this.editMode) {
-      this.props.addQual(qualEntry, true)
+  addJob() {
+    /*if (this.editMode) {
       this.editMode = false
     } else {
       this.props.addQual(qualEntry)
-    }
+    }*/
 
-    this.props.saveNewQual()
+    this.props.saveNewJob({ ...this.state.job })
+    this.setState({
+      job: {
+        companyName: '',
+        positionTitle: '',
+        positionStartDate: '',
+        positionEndDate: '',
+        roleDescription: '',
+        id: uniqid(),
+      },
+    })
   }
 
-  /*editQual(e) {
+  editQual(e) {
     const id = e.target.getAttribute('data-key')
-    const qual = this.props.info.qualifications.find((entry) => entry.id === id)
-    this.setState({ ...qual })
+    const qual = this.props.data.qualifications.find((entry) => entry.id === id)
+    this.setState({ education: qual })
     this.editMode = true
   }
 
@@ -110,10 +135,10 @@ class BuildView extends Component {
       id: uniqid(),
     })
     this.editMode = false
-  }*/
+  }
 
   render() {
-    const { data, saveInfo, saveNewQual } = this.props
+    const { data, saveInfo, saveNewQual, addJob } = this.props
 
     return (
       <form>
@@ -122,9 +147,17 @@ class BuildView extends Component {
           <GeneralInfoEditor editingInfo={this.state.general} handleChange={this.handleChange} handleFileChange={this.handleFileChange} />
         )}
         {this.state.educationFieldset && (
-          <EducationInfoEditor data={data} editingInfo={this.state.education} handleChange={this.handleChange} addQual={this.addQual} />
+          <EducationInfoEditor
+            data={data}
+            editingInfo={this.state.education}
+            handleChange={this.handleChange}
+            addQual={this.addQual}
+            editQual={this.editQual}
+          />
         )}
-        {this.state.experienceFieldset && <ExperienceInfoEditor data={data} editingInfo={this.state.job} handleChange={this.handleChange} />}
+        {this.state.experienceFieldset && (
+          <ExperienceInfoEditor data={data} editingInfo={this.state.job} handleChange={this.handleChange} addJob={this.addJob} />
+        )}
       </form>
     )
   }

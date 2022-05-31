@@ -5,24 +5,16 @@ import StoredQualInfo from './StoredQualInfo'
 class EducationInfoEditor extends Component {
   constructor(props) {
     super(props)
-
-    this.state = {
-      placeOfStudy: '',
-      qualName: '',
-      startDate: '',
-      endDate: '',
-      id: uniqid(),
-    }
   }
 
   render() {
-    const { data, editingInfo, handleChange, addQual } = this.props
+    const { data, editingInfo, handleChange, addQual, editQual } = this.props
     let editing = this.editMode
 
     return (
       <fieldset>
         <legend>Education Information</legend>
-        <StoredQualInfo data={data.qualifications} editQual={this.editQual} />
+        <StoredQualInfo data={data.qualifications} editQual={editQual} />
 
         <div className="two-col">
           <label htmlFor="placeOfStudy">Place of Study:</label>
