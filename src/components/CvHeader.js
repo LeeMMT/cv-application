@@ -12,9 +12,6 @@ class CvHeader extends Component {
     const activeInfo = data.quickPreview ? dummyInfo : data
     const imgSrc = activeInfo.photoFile ? URL.createObjectURL(activeInfo.photoFile) : null
 
-    console.log(activeInfo)
-    console.log(activeInfo.general.fname)
-
     return (
       <div className="cv-header">
         <div className="header-title">

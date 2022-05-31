@@ -38,7 +38,7 @@ class StoredQualInfo extends Component {
       <div className="stored-job-info">
         <div>
           <img src={educationHistoryMale}></img>
-          <p className="job-info-heading">Your Job History</p>
+          <p className="job-info-heading">Your Qualifications</p>
           <p>
             Here you can see a card for each position you've added. Have a flick through your deck and click "edit" on any you'd like to change the details for.
             To save your changes click the "+" (save) button at the bottom.

@@ -16,38 +16,8 @@ class ExperienceInfoEditor extends Component {
     }
 
     this.editMode = false
-    this.handleChange = this.handleChange.bind(this)
-    this.createJobObject = this.createJobObject.bind(this)
     this.editJob = this.editJob.bind(this)
     this.cancelEdit = this.cancelEdit.bind(this)
-  }
-
-  handleChange(e) {
-    this.setState({
-      [e.target.name]: e.target.value,
-    })
-  }
-
-  createJobObject() {
-    const jobEntry = {
-      ...this.state,
-    }
-
-    if (this.editMode) {
-      this.props.addJob(jobEntry, true)
-      this.editMode = false
-    } else {
-      this.props.addJob(jobEntry)
-    }
-
-    this.setState({
-      companyName: '',
-      positionTitle: '',
-      positionStartDate: '',
-      positionEndDate: '',
-      roleDescription: '',
-      id: uniqid(),
-    })
   }
 
   editJob(e) {
@@ -70,7 +40,7 @@ class ExperienceInfoEditor extends Component {
   }
 
   render() {
-    const { data, editingInfo } = this.props
+    const { data, editingInfo, handleChange } = this.props
     let editing = this.editMode
 
     return (
@@ -79,19 +49,26 @@ class ExperienceInfoEditor extends Component {
         <StoredJobInfo data={data.jobs} editJob={this.editJob} />
         <div className="two-col">
           <label htmlFor="companyName">Company Name:</label>
-          <input id="companyName" name="companyName" value={editingInfo.companyName} onChange={this.handleChange}></input>
+          <input id="companyName" name="companyName" data-object="job" value={editingInfo.companyName} onChange={handleChange}></input>
 
           <label htmlFor="positionTitle">Position Title:</label>
-          <input id="positionTitle" name="positionTitle" value={editingInfo.positionTitle} onChange={this.handleChange}></input>
+          <input id="positionTitle" name="positionTitle" data-object="job" value={editingInfo.positionTitle} onChange={handleChange}></input>
 
           <label htmlFor="positionStartDate">Start Date:</label>
-          <input id="positionStartDate" name="positionStartDate" type="date" value={editingInfo.positionStartDate} onChange={this.handleChange}></input>
+          <input
+            id="positionStartDate"
+            name="positionStartDate"
+            type="date"
+            data-object="job"
+            value={editingInfo.positionStartDate}
+            onChange={handleChange}
+          ></input>
 
           <label htmlFor="positionStartDate">End Date:</label>
-          <input id="positionEndDate" name="positionEndDate" type="date" value={editingInfo.positionEndDate} onChange={this.handleChange}></input>
+          <input id="positionEndDate" name="positionEndDate" type="date" data-object="job" value={editingInfo.positionEndDate} onChange={handleChange}></input>
 
           <label htmlFor="mainTasks">Description of Role:</label>
-          <textarea id="roleDescription" name="roleDescription" value={editingInfo.roleDescription} onChange={this.handleChange}></textarea>
+          <textarea id="roleDescription" name="roleDescription" data-object="job" value={editingInfo.roleDescription} onChange={handleChange}></textarea>
         </div>
         <div className="add-and-edit-container">
           <button className={this.editMode ? 'cancel-edit-btn visible' : 'cancel-edit-btn'} type="button" onClick={this.cancelEdit}>
