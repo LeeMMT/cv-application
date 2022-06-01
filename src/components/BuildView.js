@@ -119,13 +119,16 @@ class BuildView extends Component {
   }
 
   cardClickHandler(e) {
-    console.log('cardClickHandler firing')
-    this.editMode = true
     const id = e.target.getAttribute('data-key')
     const formField = e.target.getAttribute('data-object')
     const buildViewObjectKey = formField === 'jobs' ? 'job' : 'education'
     const entry = this.props.data[formField].find((entry) => entry.id === id)
-    this.setState({ [buildViewObjectKey]: entry })
+    if (e.target.textContent == 'edit') {
+      this.editMode = true
+      this.setState({ [buildViewObjectKey]: entry })
+    } else {
+      this.props.deleteEntry(entry, formField)
+    }
   }
 
   cancelEdit() {
@@ -141,7 +144,7 @@ class BuildView extends Component {
   }
 
   render() {
-    const { data, saveInfo, saveNewEntry } = this.props
+    const { data, saveInfo, saveNewEntry, deleteEntry } = this.props
 
     return (
       <form>

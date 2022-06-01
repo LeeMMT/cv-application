@@ -29,6 +29,7 @@ class App extends Component {
     this.toggleDummyData = this.toggleDummyData.bind(this)
     this.saveInfo = this.saveInfo.bind(this)
     this.saveNewEntry = this.saveNewEntry.bind(this)
+    this.deleteEntry = this.deleteEntry.bind(this)
   }
 
   componentDidUpdate() {
@@ -41,6 +42,7 @@ class App extends Component {
   }
 
   saveNewEntry(entry, objKey, edit = false) {
+    console.log(arguments)
     const key = objKey === 'job' ? 'jobs' : 'qualifications'
     if (edit) {
       console.log(entry)
@@ -56,6 +58,12 @@ class App extends Component {
       const newEntry = entry
       this.setState({ [key]: this.state[key].concat(newEntry) })
     }
+  }
+
+  deleteEntry(entry, objKey) {
+    console.log(arguments)
+    const key = objKey === 'jobs' ? 'jobs' : 'qualifications'
+    this.setState({ [key]: this.state[key].filter((obj) => obj.id !== entry.id) })
   }
 
   toggleMode(e) {
@@ -76,7 +84,7 @@ class App extends Component {
     return (
       <div>
         <Header activeView={this.state.activeView} toggleMode={this.toggleMode} toggleDummyData={this.toggleDummyData} />
-        <Main data={this.state} saveInfo={this.saveInfo} saveNewEntry={this.saveNewEntry} />
+        <Main data={this.state} saveInfo={this.saveInfo} saveNewEntry={this.saveNewEntry} deleteEntry={this.deleteEntry} />
       </div>
     )
   }
