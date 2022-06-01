@@ -24,9 +24,14 @@ class CardSlide extends Component {
             {startDate} - {endDate}
           </p>
         )}
-        <button type="button" data-object={dataObject} data-key={dataId} onClick={clickHandler}>
-          Edit
-        </button>
+        <div className="slide-info-buttons">
+          <button type="button" data-object={dataObject} data-key={dataId} onClick={clickHandler}>
+            Edit
+          </button>
+          <button type="button" data-object={dataObject} data-key={dataId} onClick={clickHandler}>
+            Delete
+          </button>
+        </div>
       </div>
     )
   }
