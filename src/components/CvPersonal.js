@@ -9,12 +9,16 @@ class CvPersonal extends Component {
     const { data, dummyInfo } = this.props
 
     const activeInfo = data.quickPreview ? dummyInfo : data
+    let city = activeInfo.general.city
+    if (activeInfo.general.city && activeInfo.general.country) {
+      city = activeInfo.general.city.concat(',')
+    }
     return (
       <div className="personal-section">
         <div className="info-row">
           <i className="icon location"></i>
           <p>
-            {activeInfo.general.city}, {activeInfo.general.country}
+            {city} {activeInfo.general.country}
           </p>
         </div>
         <div className="info-row">

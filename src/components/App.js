@@ -41,9 +41,18 @@ class App extends Component {
   }
 
   saveNewEntry(entry, objKey, edit = false) {
+    const key = objKey === 'job' ? 'jobs' : 'qualifications'
     if (edit) {
+      console.log(entry)
+      const newArray = this.state[key].map((obj) => {
+        if (obj.id !== entry.id) {
+          return obj
+        } else {
+          return entry
+        }
+      })
+      this.setState({ [key]: newArray })
     } else {
-      const key = objKey === 'job' ? 'jobs' : 'qualifications'
       const newEntry = entry
       this.setState({ [key]: this.state[key].concat(newEntry) })
     }

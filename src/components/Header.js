@@ -14,7 +14,7 @@ class Header extends Component {
         <div id="nav-container">
           <h1 id="header-title">CV Creator</h1>
           <nav id="top-nav">
-            <button className="toggle-btn">
+            <button className={activeView === 'preview' ? 'toggle-btn' : 'toggle-btn hidden'}>
               Dummy info
               <label className="switch">
                 <input type="checkbox" onChange={toggleDummyData} />

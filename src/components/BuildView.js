@@ -42,6 +42,7 @@ class BuildView extends Component {
     this.toggleArea = this.toggleArea.bind(this)
     this.addEntry = this.addEntry.bind(this)
     this.editEntry = this.editEntry.bind(this)
+    this.cancelEdit = this.cancelEdit.bind(this)
   }
 
   updateData() {
@@ -78,18 +79,15 @@ class BuildView extends Component {
   }
 
   addEntry(e) {
-    if (this.editMode) {
-      this.props.saveNewEntry({ ...this.state.education })
-    }
-
     const objKey = e.currentTarget.getAttribute('data-object')
-    const entry = { ...this.state[objKey] }
+    const entry = this.state[objKey]
 
-    console.log('e.target is...')
-    console.log(e.target.getAttribute('data-object'))
-    console.log(objKey)
-
-    this.props.saveNewEntry(entry, objKey)
+    if (this.editMode) {
+      this.props.saveNewEntry(entry, objKey, true)
+      this.editMode = false
+    } else {
+      this.props.saveNewEntry(entry, objKey)
+    }
 
     if (objKey === 'job') {
       this.setState({
@@ -116,7 +114,6 @@ class BuildView extends Component {
   }
 
   editEntry(e) {
-    console.log('editEntry firing')
     this.editMode = true
     const id = e.target.getAttribute('data-key')
     const formField = e.target.getAttribute('data-object')
@@ -154,10 +151,19 @@ class BuildView extends Component {
             handleChange={this.handleChange}
             addEntry={this.addEntry}
             editEntry={this.editEntry}
+            cancelEdit={this.cancelEdit}
           />
         )}
         {this.state.experienceFieldset && (
-          <ExperienceInfoEditor editMode={this.editMode} data={data} editingInfo={this.state.job} handleChange={this.handleChange} addEntry={this.addEntry} />
+          <ExperienceInfoEditor
+            editMode={this.editMode}
+            data={data}
+            editingInfo={this.state.job}
+            handleChange={this.handleChange}
+            addEntry={this.addEntry}
+            editEntry={this.editEntry}
+            cancelEdit={this.cancelEdit}
+          />
         )}
       </form>
     )

@@ -8,7 +8,7 @@ class EducationInfoEditor extends Component {
   }
 
   render() {
-    const { editMode, data, editingInfo, handleChange, addEntry, editEntry } = this.props
+    const { editMode, data, editingInfo, handleChange, addEntry, editEntry, cancelEdit } = this.props
 
     return (
       <fieldset>

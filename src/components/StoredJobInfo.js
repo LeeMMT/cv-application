@@ -13,7 +13,7 @@ class StoredJobInfo extends Component {
   }
 
   render() {
-    const { data, editJob } = this.props
+    const { data, editEntry } = this.props
 
     const slides = data.map((job) => {
       const id = job.id
@@ -30,7 +30,7 @@ class StoredJobInfo extends Component {
             secondaryText={secondaryText}
             dateOne={startDate}
             dateTwo={endDate}
-            clickHandler={editJob}
+            clickHandler={editEntry}
           ></CardSlide>
         </SwiperSlide>
       )

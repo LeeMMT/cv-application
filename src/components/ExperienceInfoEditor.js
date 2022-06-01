@@ -14,39 +14,15 @@ class ExperienceInfoEditor extends Component {
       roleDescription: '',
       id: uniqid(),
     }
-
-    this.editMode = false
-    this.editJob = this.editJob.bind(this)
-    this.cancelEdit = this.cancelEdit.bind(this)
-  }
-
-  editJob(e) {
-    const id = e.target.getAttribute('data-key')
-    const job = this.props.info.jobs.find((entry) => entry.id === id)
-    this.setState({ ...job })
-    this.editMode = true
-  }
-
-  cancelEdit() {
-    this.setState({
-      companyName: '',
-      positionTitle: '',
-      positionStartDate: '',
-      positionEndDate: '',
-      roleDescription: '',
-      id: uniqid(),
-    })
-    this.editMode = false
   }
 
   render() {
-    const { editMode, data, editingInfo, handleChange, addEntry } = this.props
-    let editing = this.editMode
+    const { editMode, data, editingInfo, handleChange, addEntry, editEntry } = this.props
 
     return (
       <fieldset>
         <legend>Experience Information</legend>
-        <StoredJobInfo data={data.jobs} editJob={this.editJob} />
+        <StoredJobInfo data={data.jobs} editEntry={editEntry} />
         <div className="two-col">
           <label htmlFor="companyName">Company Name:</label>
           <input id="companyName" name="companyName" data-object="job" value={editingInfo.companyName} onChange={handleChange}></input>
