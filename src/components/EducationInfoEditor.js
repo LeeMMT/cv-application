@@ -8,12 +8,12 @@ class EducationInfoEditor extends Component {
   }
 
   render() {
-    const { editMode, data, editingInfo, handleChange, addEntry, editEntry, cancelEdit } = this.props
+    const { editMode, data, editingInfo, handleChange, addEntry, cardClickHandler, cancelEdit } = this.props
 
     return (
       <fieldset>
         <legend>Education Information</legend>
-        <StoredQualInfo data={data.qualifications} editEntry={editEntry} />
+        <StoredQualInfo data={data.qualifications} cardClickHandler={cardClickHandler} />
 
         <div className="two-col">
           <label htmlFor="placeOfStudy">Place of Study:</label>
@@ -30,7 +30,7 @@ class EducationInfoEditor extends Component {
         </div>
 
         <div className="add-and-edit-container">
-          <button className={this.editMode ? 'cancel-edit-btn visible' : 'cancel-edit-btn'} type="button" onClick={this.cancelEdit}>
+          <button className={this.editMode ? 'cancel-edit-btn visible' : 'cancel-edit-btn'} type="button" onClick={cancelEdit}>
             Cancel edit
           </button>
           <div className="add-info-controls">

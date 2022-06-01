@@ -13,7 +13,7 @@ class StoredQualInfo extends Component {
   }
 
   render() {
-    const { data, editEntry } = this.props
+    const { data, cardClickHandler } = this.props
 
     const slides = data.map((qual) => {
       const id = qual.id
@@ -30,7 +30,7 @@ class StoredQualInfo extends Component {
             secondaryText={secondaryText}
             dateOne={startDate}
             dateTwo={endDate}
-            clickHandler={editEntry}
+            cardClickHandler={cardClickHandler}
           ></CardSlide>
         </SwiperSlide>
       )
@@ -47,7 +47,14 @@ class StoredQualInfo extends Component {
         </div>
         <div>
           {data.length ? (
-            <Swiper effect={'cards'} grabCursor={true} modules={[EffectCards, Pagination]} pagination={{ type: 'fraction' }} className="mySwiper">
+            <Swiper
+              effect={'cards'}
+              grabCursor={true}
+              modules={[EffectCards, Pagination]}
+              navigation={false}
+              pagination={{ type: 'fraction' }}
+              className="mySwiper"
+            >
               {slides}
             </Swiper>
           ) : (

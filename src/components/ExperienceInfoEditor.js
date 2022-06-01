@@ -5,24 +5,15 @@ import StoredJobInfo from './StoredJobInfo'
 class ExperienceInfoEditor extends Component {
   constructor(props) {
     super(props)
-
-    this.state = {
-      companyName: '',
-      positionTitle: '',
-      positionStartDate: '',
-      positionEndDate: '',
-      roleDescription: '',
-      id: uniqid(),
-    }
   }
 
   render() {
-    const { editMode, data, editingInfo, handleChange, addEntry, editEntry } = this.props
+    const { editMode, data, editingInfo, handleChange, addEntry, cardClickHandler, cancelEdit } = this.props
 
     return (
       <fieldset>
         <legend>Experience Information</legend>
-        <StoredJobInfo data={data.jobs} editEntry={editEntry} />
+        <StoredJobInfo data={data.jobs} cardClickHandler={cardClickHandler} />
         <div className="two-col">
           <label htmlFor="companyName">Company Name:</label>
           <input id="companyName" name="companyName" data-object="job" value={editingInfo.companyName} onChange={handleChange}></input>
@@ -47,7 +38,7 @@ class ExperienceInfoEditor extends Component {
           <textarea id="roleDescription" name="roleDescription" data-object="job" value={editingInfo.roleDescription} onChange={handleChange}></textarea>
         </div>
         <div className="add-and-edit-container">
-          <button className={this.editMode ? 'cancel-edit-btn visible' : 'cancel-edit-btn'} type="button" onClick={this.cancelEdit}>
+          <button className={this.editMode ? 'cancel-edit-btn visible' : 'cancel-edit-btn'} type="button" onClick={cancelEdit}>
             Cancel edit
           </button>
           <div className="add-info-controls">

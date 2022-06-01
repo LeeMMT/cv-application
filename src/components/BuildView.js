@@ -41,8 +41,13 @@ class BuildView extends Component {
     this.updateData = this.updateData.bind(this)
     this.toggleArea = this.toggleArea.bind(this)
     this.addEntry = this.addEntry.bind(this)
-    this.editEntry = this.editEntry.bind(this)
+    this.cardClickHandler = this.cardClickHandler.bind(this)
     this.cancelEdit = this.cancelEdit.bind(this)
+  }
+
+  componentDidUpdate() {
+    console.log('BiuldView Updated')
+    console.log(this.state)
   }
 
   updateData() {
@@ -113,7 +118,8 @@ class BuildView extends Component {
     }
   }
 
-  editEntry(e) {
+  cardClickHandler(e) {
+    console.log('cardClickHandler firing')
     this.editMode = true
     const id = e.target.getAttribute('data-key')
     const formField = e.target.getAttribute('data-object')
@@ -150,7 +156,7 @@ class BuildView extends Component {
             editingInfo={this.state.education}
             handleChange={this.handleChange}
             addEntry={this.addEntry}
-            editEntry={this.editEntry}
+            cardClickHandler={this.cardClickHandler}
             cancelEdit={this.cancelEdit}
           />
         )}
@@ -161,7 +167,7 @@ class BuildView extends Component {
             editingInfo={this.state.job}
             handleChange={this.handleChange}
             addEntry={this.addEntry}
-            editEntry={this.editEntry}
+            cardClickHandler={this.cardClickHandler}
             cancelEdit={this.cancelEdit}
           />
         )}
