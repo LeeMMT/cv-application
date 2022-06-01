@@ -13,7 +13,7 @@ class StoredQualInfo extends Component {
   }
 
   render() {
-    const { data, editQual } = this.props
+    const { data, editEntry } = this.props
 
     const slides = data.map((qual) => {
       const id = qual.id
@@ -24,12 +24,13 @@ class StoredQualInfo extends Component {
       return (
         <SwiperSlide key={id}>
           <CardSlide
+            dataObject="qualifications"
             dataId={id}
             primaryText={primaryText}
             secondaryText={secondaryText}
             dateOne={startDate}
             dateTwo={endDate}
-            clickHandler={editQual}
+            clickHandler={editEntry}
           ></CardSlide>
         </SwiperSlide>
       )

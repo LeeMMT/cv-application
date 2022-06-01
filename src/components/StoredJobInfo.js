@@ -24,6 +24,7 @@ class StoredJobInfo extends Component {
       return (
         <SwiperSlide key={id}>
           <CardSlide
+            dataObject="jobs"
             dataId={id}
             primaryText={primaryText}
             secondaryText={secondaryText}

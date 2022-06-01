@@ -5,7 +5,7 @@ class CardSlide extends Component {
   }
 
   render() {
-    const { dataId, primaryText, secondaryText, dateOne, dateTwo, clickHandler } = this.props
+    const { dataObject, dataId, primaryText, secondaryText, dateOne, dateTwo, clickHandler } = this.props
 
     let startDate = null
     let endDate = null
@@ -24,7 +24,7 @@ class CardSlide extends Component {
             {startDate} - {endDate}
           </p>
         )}
-        <button type="button" data-key={dataId} onClick={clickHandler}>
+        <button type="button" data-object={dataObject} data-key={dataId} onClick={clickHandler}>
           Edit
         </button>
       </div>

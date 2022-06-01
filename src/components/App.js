@@ -28,8 +28,7 @@ class App extends Component {
     this.toggleMode = this.toggleMode.bind(this)
     this.toggleDummyData = this.toggleDummyData.bind(this)
     this.saveInfo = this.saveInfo.bind(this)
-    this.saveNewQual = this.saveNewQual.bind(this)
-    this.saveNewJob = this.saveNewJob.bind(this)
+    this.saveNewEntry = this.saveNewEntry.bind(this)
   }
 
   componentDidUpdate() {
@@ -41,14 +40,13 @@ class App extends Component {
     this.setState({ general: data })
   }
 
-  saveNewQual(qual) {
-    const newQual = qual
-    this.setState({ qualifications: this.state.qualifications.concat(newQual) })
-  }
-
-  saveNewJob(job) {
-    const newJob = job
-    this.setState({ jobs: this.state.jobs.concat(job) })
+  saveNewEntry(entry, objKey, edit = false) {
+    if (edit) {
+    } else {
+      const key = objKey === 'job' ? 'jobs' : 'qualifications'
+      const newEntry = entry
+      this.setState({ [key]: this.state[key].concat(newEntry) })
+    }
   }
 
   toggleMode(e) {
@@ -69,7 +67,7 @@ class App extends Component {
     return (
       <div>
         <Header activeView={this.state.activeView} toggleMode={this.toggleMode} toggleDummyData={this.toggleDummyData} />
-        <Main data={this.state} saveInfo={this.saveInfo} saveNewQual={this.saveNewQual} saveNewJob={this.saveNewJob} />
+        <Main data={this.state} saveInfo={this.saveInfo} saveNewEntry={this.saveNewEntry} />
       </div>
     )
   }

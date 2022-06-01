@@ -14,18 +14,8 @@ class BuildView extends Component {
       personalFieldset: true,
       educationFieldset: true,
       experienceFieldset: true,
-      qualEdit: false,
-      jobEdit: false,
 
       general: this.props.data.general,
-
-      education: {
-        placeOfStudy: '',
-        qualName: '',
-        startDate: '',
-        endDate: '',
-        id: uniqid(),
-      },
 
       job: {
         companyName: '',
@@ -35,6 +25,14 @@ class BuildView extends Component {
         roleDescription: '',
         id: uniqid(),
       },
+
+      education: {
+        placeOfStudy: '',
+        qualName: '',
+        startDate: '',
+        endDate: '',
+        id: uniqid(),
+      },
     }
 
     this.editMode = false
@@ -42,14 +40,8 @@ class BuildView extends Component {
     this.handleFileChange = this.handleFileChange.bind(this)
     this.updateData = this.updateData.bind(this)
     this.toggleArea = this.toggleArea.bind(this)
-    this.addQual = this.addQual.bind(this)
-    this.addJob = this.addJob.bind(this)
-    this.editQual = this.editQual.bind(this)
-  }
-
-  componentDidUpdate() {
-    console.log('Buildview updated')
-    console.log(this.state)
+    this.addEntry = this.addEntry.bind(this)
+    this.editEntry = this.editEntry.bind(this)
   }
 
   updateData() {
@@ -85,44 +77,52 @@ class BuildView extends Component {
     })
   }
 
-  addQual() {
-    this.props.saveNewQual({ ...this.state.education })
-    this.setState({
-      education: {
-        placeOfStudy: '',
-        qualName: '',
-        startDate: '',
-        endDate: '',
-        id: uniqid(),
-      },
-    })
-  }
+  addEntry(e) {
+    if (this.editMode) {
+      this.props.saveNewEntry({ ...this.state.education })
+    }
 
-  addJob() {
-    /*if (this.editMode) {
-      this.editMode = false
+    const objKey = e.currentTarget.getAttribute('data-object')
+    const entry = { ...this.state[objKey] }
+
+    console.log('e.target is...')
+    console.log(e.target.getAttribute('data-object'))
+    console.log(objKey)
+
+    this.props.saveNewEntry(entry, objKey)
+
+    if (objKey === 'job') {
+      this.setState({
+        job: {
+          companyName: '',
+          positionTitle: '',
+          positionStartDate: '',
+          positionEndDate: '',
+          roleDescription: '',
+          id: uniqid(),
+        },
+      })
     } else {
-      this.props.addQual(qualEntry)
-    }*/
-
-    this.props.saveNewJob({ ...this.state.job })
-    this.setState({
-      job: {
-        companyName: '',
-        positionTitle: '',
-        positionStartDate: '',
-        positionEndDate: '',
-        roleDescription: '',
-        id: uniqid(),
-      },
-    })
+      this.setState({
+        education: {
+          placeOfStudy: '',
+          qualName: '',
+          startDate: '',
+          endDate: '',
+          id: uniqid(),
+        },
+      })
+    }
   }
 
-  editQual(e) {
-    const id = e.target.getAttribute('data-key')
-    const qual = this.props.data.qualifications.find((entry) => entry.id === id)
-    this.setState({ education: qual })
+  editEntry(e) {
+    console.log('editEntry firing')
     this.editMode = true
+    const id = e.target.getAttribute('data-key')
+    const formField = e.target.getAttribute('data-object')
+    const buildViewObjectKey = formField === 'jobs' ? 'job' : 'education'
+    const entry = this.props.data[formField].find((entry) => entry.id === id)
+    this.setState({ [buildViewObjectKey]: entry })
   }
 
   cancelEdit() {
@@ -138,7 +138,7 @@ class BuildView extends Component {
   }
 
   render() {
-    const { data, saveInfo, saveNewQual, addJob } = this.props
+    const { data, saveInfo, saveNewEntry } = this.props
 
     return (
       <form>
@@ -148,15 +148,16 @@ class BuildView extends Component {
         )}
         {this.state.educationFieldset && (
           <EducationInfoEditor
+            editMode={this.editMode}
             data={data}
             editingInfo={this.state.education}
             handleChange={this.handleChange}
-            addQual={this.addQual}
-            editQual={this.editQual}
+            addEntry={this.addEntry}
+            editEntry={this.editEntry}
           />
         )}
         {this.state.experienceFieldset && (
-          <ExperienceInfoEditor data={data} editingInfo={this.state.job} handleChange={this.handleChange} addJob={this.addJob} />
+          <ExperienceInfoEditor editMode={this.editMode} data={data} editingInfo={this.state.job} handleChange={this.handleChange} addEntry={this.addEntry} />
         )}
       </form>
     )
