@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import uniqid from 'uniqid'
 import GeneralInfoEditor from './GeneralInfoEditor'
+import SkillsInfoEditor from './SkillsInfoEditor'
 import EducationInfoEditor from './EducationInfoEditor'
 import ExperienceInfoEditor from './ExperienceInfoEditor'
 import '../styles/build-view.css'
@@ -12,12 +13,18 @@ class BuildView extends Component {
 
     this.state = {
       personalFieldset: true,
+      skillsFieldset: true,
       educationFieldset: true,
       experienceFieldset: true,
 
       general: this.props.data.general,
 
-      job: {
+      skills: {
+        skillName: '',
+        id: uniqid(),
+      },
+
+      jobs: {
         companyName: '',
         positionTitle: '',
         positionStartDate: '',
@@ -26,7 +33,7 @@ class BuildView extends Component {
         id: uniqid(),
       },
 
-      education: {
+      qualifications: {
         placeOfStudy: '',
         qualName: '',
         startDate: '',
@@ -46,7 +53,7 @@ class BuildView extends Component {
   }
 
   componentDidUpdate() {
-    console.log('BiuldView Updated')
+    console.log('Buildview updated')
     console.log(this.state)
   }
 
@@ -66,14 +73,10 @@ class BuildView extends Component {
   }
 
   handleFileChange(e) {
-    const file = e.target.files[0]
-    this.props.savePhotoFile(file)
-    this.setState({
-      general: {
-        ...this.state.general,
-        photoFile: file,
-      },
-    })
+    //const file = e.target.files[0]
+    console.log('handleFileChange firing')
+    console.log(e)
+    this.setState({ general: { ...this.state.general, photoFile: e.target.files[0] } })
   }
 
   toggleArea(e) {
@@ -94,9 +97,9 @@ class BuildView extends Component {
       this.props.saveNewEntry(entry, objKey)
     }
 
-    if (objKey === 'job') {
+    if (objKey === 'jobs') {
       this.setState({
-        job: {
+        jobs: {
           companyName: '',
           positionTitle: '',
           positionStartDate: '',
@@ -105,13 +108,20 @@ class BuildView extends Component {
           id: uniqid(),
         },
       })
-    } else {
+    } else if (objKey === 'qualifications') {
       this.setState({
-        education: {
+        qualifications: {
           placeOfStudy: '',
           qualName: '',
           startDate: '',
           endDate: '',
+          id: uniqid(),
+        },
+      })
+    } else {
+      this.setState({
+        skills: {
+          skillName: '',
           id: uniqid(),
         },
       })
@@ -120,31 +130,60 @@ class BuildView extends Component {
 
   cardClickHandler(e) {
     const id = e.target.getAttribute('data-key')
+    console.log(id)
     const formField = e.target.getAttribute('data-object')
-    const buildViewObjectKey = formField === 'jobs' ? 'job' : 'education'
+    console.log(formField)
     const entry = this.props.data[formField].find((entry) => entry.id === id)
-    if (e.target.textContent == 'edit') {
+
+    console.log('cardClickHandler fired')
+    console.log(entry)
+
+    if (e.target.textContent === 'Edit') {
+      console.log('went into edit')
       this.editMode = true
-      this.setState({ [buildViewObjectKey]: entry })
+      this.setState({ [formField]: entry })
     } else {
+      console.log('went into delete')
       this.props.deleteEntry(entry, formField)
     }
   }
 
-  cancelEdit() {
-    this.setState({
-      companyName: '',
-      positionTitle: '',
-      positionStartDate: '',
-      positionEndDate: '',
-      roleDescription: '',
-      id: uniqid(),
-    })
+  cancelEdit(e) {
+    const objKey = e.target.getAttribute('data-object')
+    if (objKey === 'jobs') {
+      this.setState({
+        jobs: {
+          companyName: '',
+          positionTitle: '',
+          positionStartDate: '',
+          positionEndDate: '',
+          roleDescription: '',
+          id: uniqid(),
+        },
+      })
+    } else if (objKey === 'qualifications') {
+      this.setState({
+        qualifications: {
+          placeOfStudy: '',
+          qualName: '',
+          startDate: '',
+          endDate: '',
+          id: uniqid(),
+        },
+      })
+    } else {
+      this.setState({
+        skills: {
+          skillName: '',
+          id: uniqid(),
+        },
+      })
+    }
     this.editMode = false
   }
 
   render() {
-    const { data, saveInfo, saveNewEntry, deleteEntry } = this.props
+    const { data, saveInfo, saveNewEntry, deleteEntry, savePhotoFile } = this.props
 
     return (
       <form>
@@ -152,22 +191,36 @@ class BuildView extends Component {
         {this.state.personalFieldset && (
           <GeneralInfoEditor editingInfo={this.state.general} handleChange={this.handleChange} handleFileChange={this.handleFileChange} />
         )}
-        {this.state.educationFieldset && (
-          <EducationInfoEditor
+
+        {this.state.skillsFieldset && (
+          <SkillsInfoEditor
             editMode={this.editMode}
             data={data}
-            editingInfo={this.state.education}
+            editingInfo={this.state.skills}
             handleChange={this.handleChange}
             addEntry={this.addEntry}
             cardClickHandler={this.cardClickHandler}
             cancelEdit={this.cancelEdit}
           />
         )}
+
+        {this.state.educationFieldset && (
+          <EducationInfoEditor
+            editMode={this.editMode}
+            data={data}
+            editingInfo={this.state.qualifications}
+            handleChange={this.handleChange}
+            addEntry={this.addEntry}
+            cardClickHandler={this.cardClickHandler}
+            cancelEdit={this.cancelEdit}
+          />
+        )}
+
         {this.state.experienceFieldset && (
           <ExperienceInfoEditor
             editMode={this.editMode}
             data={data}
-            editingInfo={this.state.job}
+            editingInfo={this.state.jobs}
             handleChange={this.handleChange}
             addEntry={this.addEntry}
             cardClickHandler={this.cardClickHandler}

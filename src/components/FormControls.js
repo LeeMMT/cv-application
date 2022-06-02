@@ -14,6 +14,9 @@ class FormControls extends Component {
           <button className={editingInfo.personalFieldset ? 'toggled-on' : undefined} type="button" data-area="personalFieldset" onClick={toggleArea}>
             Personal
           </button>
+          <button className={editingInfo.skillsFieldset ? 'toggled-on' : undefined} type="button" data-area="skillsFieldset" onClick={toggleArea}>
+            Skills
+          </button>
           <button className={editingInfo.educationFieldset ? 'toggled-on' : undefined} type="button" data-area="educationFieldset" onClick={toggleArea}>
             Education
           </button>

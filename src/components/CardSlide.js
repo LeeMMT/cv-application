@@ -5,30 +5,30 @@ class CardSlide extends Component {
   }
 
   render() {
-    const { dataObject, dataId, primaryText, secondaryText, dateOne, dateTwo, cardClickHandler } = this.props
+    //const { dataObject, dataId, primaryText, secondaryText, dateOne, dateTwo, cardClickHandler } = this.props
 
     let startDate = null
     let endDate = null
 
-    if (dateOne && dateTwo) {
-      startDate = new Date(dateOne).getFullYear()
-      endDate = new Date(dateTwo).getFullYear()
+    if (this.props.dateOne && this.props.dateTwo) {
+      startDate = new Date(this.props.dateOne).getFullYear()
+      endDate = new Date(this.props.dateTwo).getFullYear()
     }
 
     return (
-      <div key={dataId} className="slide-info">
-        <p>{primaryText}</p>
-        <p>{secondaryText}</p>
+      <div key={this.props.dataId} className="slide-info">
+        <p>{this.props.primaryText}</p>
+        <p>{this.props.secondaryText}</p>
         {startDate && (
           <p>
             {startDate} - {endDate}
           </p>
         )}
         <div className="slide-info-buttons">
-          <button type="button" data-object={dataObject} data-key={dataId} onClick={cardClickHandler}>
+          <button type="button" data-object={this.props.dataObject} data-key={this.props.dataId} onClick={this.props.cardClickHandler}>
             Edit
           </button>
-          <button type="button" data-object={dataObject} data-key={dataId} onClick={cardClickHandler}>
+          <button type="button" data-object={this.props.dataObject} data-key={this.props.dataId} onClick={this.props.cardClickHandler}>
             Delete
           </button>
         </div>

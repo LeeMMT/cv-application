@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, useRef, useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { EffectCards, Pagination } from 'swiper'
 import CardSlide from './CardSlide'
@@ -40,14 +40,13 @@ class StoredQualInfo extends Component {
         <div>
           <img src={educationHistoryMale} alt=""></img>
           <p className="job-info-heading">Your Qualifications</p>
-          <p>
-            Here you can see a card for each position you've added. Have a flick through your deck and click "edit" on any you'd like to change the details for.
-            To save your changes click the "+" (save) button at the bottom.
-          </p>
+          <p>Add, edit or delete your qualifications here. When editing, save your changes by clicking the "+" (save) button below.</p>
         </div>
         <div>
           {data.length ? (
             <Swiper
+              slidePerView={1}
+              centeredSlides={true}
               effect={'cards'}
               grabCursor={true}
               modules={[EffectCards, Pagination]}

@@ -136,10 +136,12 @@ input[type='file'] {
 }
 
 .form-controls button {
+  position: relative;
   display: inline-block;
   width: max-content;
   height: max-content;
   padding: 8px;
+  padding-left: calc(1em + 8px);
   border: none;
   border-radius: 6px;
   background-color: #ebebeb;
@@ -152,6 +154,19 @@ input[type='file'] {
   box-shadow: rgba(50, 50, 93, 0.2) 0px 2px 5px -1px inset, rgba(0, 0, 0, 0.25) 0px 1px 3px -1px inset;
 }
 
+.form-controls .toggled-on:before {
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: hsl(131, 65%, 56%);
+  display: block;
+  content: '';
+}
+
 .form-controls button:hover {
   box-shadow: rgba(50, 50, 93, 0.2) 0px 2px 5px -1px inset, rgba(0, 0, 0, 0.25) 0px 1px 3px -1px inset;
 }
@@ -161,6 +176,7 @@ input[type='file'] {
 }
 
 #save-btn {
+  padding-left: 8px;
   background-color: var(--primary);
   color: #fff;
 }
@@ -224,6 +240,7 @@ input[type='file'] {
   padding: 8px;
   border: none;
   background-color: transparent;
+  color: var(--soft-text);
   font-family: 'Open Sans Reg', Arial, Helvetica, sans-serif;
   cursor: pointer;
 }

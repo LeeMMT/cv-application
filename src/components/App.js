@@ -19,8 +19,10 @@ class App extends Component {
         bio: '',
         email: '',
         phoneNumber: '',
+        photoFile: '',
       },
 
+      skills: [],
       jobs: [],
       qualifications: [],
     }
@@ -30,6 +32,7 @@ class App extends Component {
     this.saveInfo = this.saveInfo.bind(this)
     this.saveNewEntry = this.saveNewEntry.bind(this)
     this.deleteEntry = this.deleteEntry.bind(this)
+    this.savePhotoFile = this.savePhotoFile.bind(this)
   }
 
   componentDidUpdate() {
@@ -41,29 +44,29 @@ class App extends Component {
     this.setState({ general: data })
   }
 
+  savePhotoFile(file) {
+    const newGeneralObj = { ...this.state.general, photoFile: file }
+    this.setState({ general: newGeneralObj })
+  }
+
   saveNewEntry(entry, objKey, edit = false) {
-    console.log(arguments)
-    const key = objKey === 'job' ? 'jobs' : 'qualifications'
     if (edit) {
-      console.log(entry)
-      const newArray = this.state[key].map((obj) => {
+      const newArray = this.state[objKey].map((obj) => {
         if (obj.id !== entry.id) {
           return obj
         } else {
           return entry
         }
       })
-      this.setState({ [key]: newArray })
+      this.setState({ [objKey]: newArray })
     } else {
       const newEntry = entry
-      this.setState({ [key]: this.state[key].concat(newEntry) })
+      this.setState({ [objKey]: this.state[objKey].concat(newEntry) })
     }
   }
 
   deleteEntry(entry, objKey) {
-    console.log(arguments)
-    const key = objKey === 'jobs' ? 'jobs' : 'qualifications'
-    this.setState({ [key]: this.state[key].filter((obj) => obj.id !== entry.id) })
+    this.setState({ [objKey]: this.state[objKey].filter((obj) => obj.id !== entry.id) })
   }
 
   toggleMode(e) {
@@ -84,7 +87,7 @@ class App extends Component {
     return (
       <div>
         <Header activeView={this.state.activeView} toggleMode={this.toggleMode} toggleDummyData={this.toggleDummyData} />
-        <Main data={this.state} saveInfo={this.saveInfo} saveNewEntry={this.saveNewEntry} deleteEntry={this.deleteEntry} />
+        <Main data={this.state} saveInfo={this.saveInfo} saveNewEntry={this.saveNewEntry} deleteEntry={this.deleteEntry} savePhotoFile={this.savePhotoFile} />
       </div>
     )
   }

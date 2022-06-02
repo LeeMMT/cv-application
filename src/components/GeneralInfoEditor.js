@@ -6,7 +6,7 @@ class GeneralInfoEditor extends Component {
   }
 
   render() {
-    const { editingInfo, handleChange } = this.props
+    const { editingInfo, handleChange, handleFileChange } = this.props
 
     return (
       <fieldset>
@@ -47,7 +47,7 @@ class GeneralInfoEditor extends Component {
           <div className="file-input-wrapper">
             <label className="label-btn" htmlFor="photo">
               Upload file
-              <input id="photo" name="photo" type="file" accept="image/*" onChange={this.handleFileChange}></input>
+              <input id="photo" name="photo" type="file" accept="image/*" onChange={handleFileChange}></input>
             </label>
           </div>
         </div>

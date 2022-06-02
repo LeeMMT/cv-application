@@ -5,9 +5,9 @@ import CardSlide from './CardSlide'
 import 'swiper/css'
 import 'swiper/css/effect-cards'
 import '../styles/stored-job-info.css'
-import workerStickerMale from '../stickers/work-history-male.svg'
+import educationHistoryMale from '../stickers/education-male.svg'
 
-class StoredJobInfo extends Component {
+class StoredSkillsInfo extends Component {
   constructor(props) {
     super(props)
   }
@@ -15,32 +15,21 @@ class StoredJobInfo extends Component {
   render() {
     const { data, cardClickHandler } = this.props
 
-    const slides = data.map((job) => {
-      const id = job.id
-      const primaryText = job.companyName
-      const secondaryText = job.positionTitle
-      const startDate = job.positionStartDate
-      const endDate = job.positionEndDate
+    const slides = data.map((skill) => {
+      const id = skill.id
+      const primaryText = skill.skillName
       return (
         <SwiperSlide key={id}>
-          <CardSlide
-            dataObject="jobs"
-            dataId={id}
-            primaryText={primaryText}
-            secondaryText={secondaryText}
-            dateOne={startDate}
-            dateTwo={endDate}
-            cardClickHandler={cardClickHandler}
-          ></CardSlide>
+          <CardSlide dataObject="skills" dataId={id} primaryText={primaryText} cardClickHandler={cardClickHandler}></CardSlide>
         </SwiperSlide>
       )
     })
     return (
       <div className="stored-job-info">
         <div>
-          <img src={workerStickerMale}></img>
-          <p className="job-info-heading">Your Job History</p>
-          <p>Add, edit or delete your jobs here. When editing, save your changes by clicking the "+" (save) button below.</p>
+          <img src={educationHistoryMale} alt=""></img>
+          <p className="job-info-heading">Your Skills</p>
+          <p>Add, edit or delete your skills here. When editing, save your changes by clicking the "+" (save) button below.</p>
         </div>
         <div>
           {data.length ? (
@@ -59,7 +48,7 @@ class StoredJobInfo extends Component {
           ) : (
             <div className="default-card">
               <div className="slide-info">
-                <p>No jobs added</p>
+                <p>No skills added</p>
               </div>
             </div>
           )}
@@ -69,4 +58,4 @@ class StoredJobInfo extends Component {
   }
 }
 
-export default StoredJobInfo
+export default StoredSkillsInfo
