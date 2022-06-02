@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/cv-application/static/css/main.b4e2e118.css",
+    "main.js": "/cv-application/static/js/main.e7a33ada.js",
+    "static/media/Raleway-Medium.ttf": "/cv-application/static/media/Raleway-Medium.1af9f1e9f3fd4766df83.ttf",
+    "static/media/Raleway-Regular.ttf": "/cv-application/static/media/Raleway-Regular.9ade142e81dd8d55cd32.ttf",
+    "static/media/Raleway-SemiBold.ttf": "/cv-application/static/media/Raleway-SemiBold.243af299ad3631bfc369.ttf",
+    "static/media/Raleway-Bold.ttf": "/cv-application/static/media/Raleway-Bold.d1a96e2aa6257c864d4d.ttf",
+    "static/media/OpenSans-Italic.ttf": "/cv-application/static/media/OpenSans-Italic.79c81eb67c8c53b33a29.ttf",
+    "static/media/OpenSans-Medium.ttf": "/cv-application/static/media/OpenSans-Medium.f0cdede053a22b990af8.ttf",
+    "static/media/OpenSans-Regular.ttf": "/cv-application/static/media/OpenSans-Regular.d7d7b8359eeb9cddfba6.ttf",
+    "static/media/OpenSans-Bold.ttf": "/cv-application/static/media/OpenSans-Bold.6e27168fc8a5a200a026.ttf",
+    "static/media/OpenSans-SemiBold.ttf": "/cv-application/static/media/OpenSans-SemiBold.d7261533b9a545ddc769.ttf",
+    "static/media/johnwick.webp": "/cv-application/static/media/johnwick.1915c69edc4e6aecc262.webp",
+    "static/media/work-history-male.svg": "/cv-application/static/media/work-history-male.d326f26bc0e44d0213648eed786f8406.svg",
+    "static/media/education-male.svg": "/cv-application/static/media/education-male.4665a5a737152cce75023a4b8ff6656c.svg",
+    "static/media/email.svg": "/cv-application/static/media/email.b6f463ac15af7153d883.svg",
+    "static/media/call.svg": "/cv-application/static/media/call.7c98f8001d5d7bec3d3b.svg",
+    "static/media/location.svg": "/cv-application/static/media/location.ac9f1bf2c10c007271c1.svg",
+    "index.html": "/cv-application/index.html",
+    "main.b4e2e118.css.map": "/cv-application/static/css/main.b4e2e118.css.map",
+    "main.e7a33ada.js.map": "/cv-application/static/js/main.e7a33ada.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b4e2e118.css",
+    "static/js/main.e7a33ada.js"
+  ]
+}
