@@ -22,6 +22,7 @@
   grid-template-areas:
     'header header header'
     'personal profile profile'
+    'skills profile profile'
     'education experience experience';
   box-shadow: rgba(17, 12, 46, 0.1) 0px 48px 100px 0px;
   margin: 0 auto;

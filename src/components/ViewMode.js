@@ -3,6 +3,7 @@ import CvHeader from './CvHeader'
 import '../styles/viewmode.css'
 import CvExperience from './CvExperience'
 import CvPersonal from './CvPersonal'
+import CvSkills from './CvSkills'
 import CvEducation from './CvEducation'
 import CvProfile from './CvProfile'
 import { dummyInfo } from './DummyInfo'
@@ -18,6 +19,7 @@ class ViewMode extends Component {
       <div className="view-mode-container">
         <CvHeader data={data} dummyInfo={dummyInfo} />
         <CvPersonal data={data} dummyInfo={dummyInfo} />
+        <CvSkills data={data} dummyInfo={dummyInfo} />
         <CvEducation data={data} dummyInfo={dummyInfo} />
         <CvProfile data={data} dummyInfo={dummyInfo} />
         <CvExperience data={data} dummyInfo={dummyInfo} />
