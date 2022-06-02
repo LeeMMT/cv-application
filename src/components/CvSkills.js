@@ -10,33 +10,22 @@ class CvSkills extends Component {
 
     const activeInfo = data.quickPreview ? dummyInfo : data
 
-    const qualifications = activeInfo.qualifications.map((qual) => {
-      let startDate = null
-      let endDate = null
-
-      if (qual.startDate && qual.endDate) {
-        startDate = new Date(qual.startDate).getFullYear()
-        endDate = new Date(qual.endDate).getFullYear()
-      }
+    const skills = activeInfo.skills.map((skill) => {
+      console.log('skill to follow')
+      console.log(skill)
 
       return (
-        <div key={qual.id}>
+        <div key={skill.id}>
           <span className="cv-bullet"></span>
-          <p className="cv-sub-heading">{qual.qualName}</p>
-          <p>{qual.placeOfStudy}</p>
-          {startDate && (
-            <p>
-              {startDate} - {endDate}
-            </p>
-          )}
+          <p className="cv-sub-heading">{skill.skillName}</p>
         </div>
       )
     })
 
     return (
-      <div className="education-section">
-        <p className="cv-heading">EDUCATION</p>
-        {qualifications}
+      <div className="skills-section">
+        <p className="cv-heading">SKILLS</p>
+        {skills}
       </div>
     )
   }

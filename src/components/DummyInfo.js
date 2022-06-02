@@ -11,6 +11,13 @@ export const dummyInfo = {
     email: 'babayaga@underground.com',
     phoneNumber: '07633288821',
   },
+  skills: [
+    { id: uniqid(), skillName: 'Japanese Jiu-jitsu' },
+    { id: uniqid(), skillName: 'Brazilian jiu-jitsu' },
+    { id: uniqid(), skillName: 'Judo' },
+    { id: uniqid(), skillName: 'Gun Fu' },
+    { id: uniqid(), skillName: 'Sambo' },
+  ],
   jobs: [
     {
       companyName: 'Ruska Roma',

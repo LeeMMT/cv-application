@@ -158,11 +158,18 @@
   padding: 96px 32px 32px;
 }
 
+/*Skills Section*/
+
+.skills-section {
+  grid-area: skills;
+  padding: 48px 32px 32px;
+}
+
 /*Education Section*/
 
 .education-section {
   grid-area: education;
-  padding: 48px 32px 32px;
+  padding: 32px 32px 32px;
 }
 
 .education-section > div {
